@@ -29,13 +29,13 @@ init( void )
 
 		index++;
 		//move right
-		x += line_length;
+		x += line_length * alternator;
 		//store point
 		points[index] = vec2(x, y);
 
 		index++;
 		//move down
-		y -= line_length;
+		y -= line_length * alternator;
 		//store point
 		points[index] = vec2(x, y);
 
