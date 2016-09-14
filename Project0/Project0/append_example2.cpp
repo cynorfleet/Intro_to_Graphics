@@ -5,30 +5,43 @@
 #pragma comment(lib, "freeglut")
 #pragma comment(lib, "glew32")
 
-const int NumPoints = 50000;
+const int NumPoints = 50;
 
 //----------------------------------------------------------------------------
 
 void
 init( void )
 {
-    vec2 points[NumPoints];
+  
+	//location variables
+	double x = 0.0;
+	double y= 0.0;
+	int index = 0;
+	double line_length = .05;
+	int alternator = 1;
+	vec2 points[NumPoints];
 
-    // Specifiy the vertices for a triangle
-    vec2 vertices[3] = {
-        vec2( -1.0, -1.0 ), vec2( 0.0, 1.0 ), vec2( 1.0, -1.0 )
-    };
-
-    // Select an arbitrary initial point inside of the triangle
-    points[0] = vec2( 0.25, 0.50 );
+    // Initialize origin
+    points[0] = vec2( x, y );
 
     // compute and store N-1 new points
-    for ( int i = 1; i < NumPoints; ++i ) {
-        int j = rand() % 3;   // pick a vertex at random
+    for ( int i = 1; i < 20; ++i ) {
 
-        // Compute the point halfway between the selected vertex
-        //   and the previous point
-        points[i] = ( points[i - 1] + vertices[j] ) / 2.0;
+		index++;
+		//move right
+		x += line_length;
+		//store point
+		points[index] = vec2(x, y);
+
+		index++;
+		//move down
+		y -= line_length;
+		//store point
+		points[index] = vec2(x, y);
+
+		//alternate direction
+		alternator *= -1;
+		line_length += .05;   
     }
 
     // Create a vertex array object

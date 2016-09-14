@@ -1,0 +1,12 @@
+﻿  append_example2.cpp
+c:\users\kumin\github\intro_to_graphics\project0\project0\Angel.h(63): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+C:\Users\kumin\GitHub\Intro_to_Graphics\OpenGLFiles\AngelFiles\mat.h(707): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\kumin\GitHub\Intro_to_Graphics\OpenGLFiles\AngelFiles\mat.h(708): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\kumin\GitHub\Intro_to_Graphics\OpenGLFiles\AngelFiles\mat.h(709): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\kumin\GitHub\Intro_to_Graphics\OpenGLFiles\AngelFiles\mat.h(730): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\kumin\GitHub\Intro_to_Graphics\OpenGLFiles\AngelFiles\mat.h(732): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\kumin\GitHub\Intro_to_Graphics\OpenGLFiles\AngelFiles\mat.h(735): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\kumin\GitHub\Intro_to_Graphics\OpenGLFiles\AngelFiles\mat.h(752): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+append_example2.cpp(25): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+append_example2.cpp(34): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+append_example2.cpp(40): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
