@@ -25,7 +25,7 @@ init( void )
     points[0] = vec2( x, y );
 
     // compute and store N-1 new points
-    for ( int i = 1; i < 20; ++i ) {
+    for ( int i = 1; i < 12; ++i ) {
 
 		index++;
 		//move right
@@ -74,7 +74,7 @@ void
 display( void )
 {
     glClear( GL_COLOR_BUFFER_BIT );     // clear the window
-    glDrawArrays( GL_POINTS, 0, NumPoints );    // draw the points
+    glDrawArrays( GL_LINE_STRIP, 0, NumPoints );    // draw the points
     glFlush();
 }
 
