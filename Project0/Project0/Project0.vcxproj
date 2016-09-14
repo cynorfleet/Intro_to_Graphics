@@ -73,8 +73,8 @@
     <LibraryPath>C:\OpenGLFiles\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>C:\Users\kumin\GitHub\Intro_to_Graphics\OpenGLFiles\AngelFiles;C:\Users\kumin\GitHub\Intro_to_Graphics\OpenGLFiles\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\kumin\GitHub\Intro_to_Graphics\OpenGLFiles\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>D:\GitHub\Intro_to_Graphics\OpenGLFiles\AngelFiles;D:\GitHub\Intro_to_Graphics\OpenGLFiles\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\GitHub\Intro_to_Graphics\OpenGLFiles\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

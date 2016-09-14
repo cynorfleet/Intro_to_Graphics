@@ -1,3 +1,6 @@
+//Christian Norfleet
+//Program 1
+
 // Two-Dimensional Sierpinski Gasket       
 // Generated using randomly selected vertices and bisection
 
@@ -5,7 +8,7 @@
 #pragma comment(lib, "freeglut")
 #pragma comment(lib, "glew32")
 
-const int NumPoints = 50;
+const int NumPoints = 150;
 
 //----------------------------------------------------------------------------
 
@@ -16,16 +19,16 @@ init( void )
 	//location variables
 	double x = 0.0;
 	double y= 0.0;
-	int index = 0;
-	double line_length = .05;
+	int index = 1;
+	double line_length = 0.025;
 	int alternator = 1;
 	vec2 points[NumPoints];
 
     // Initialize origin
-    points[0] = vec2( x, y );
+    points[1] = vec2( x, y );
 
     // compute and store N-1 new points
-    for ( int i = 1; i < 12; ++i ) {
+    for ( int i = 1; i < 75; ++i ) {
 
 		index++;
 		//move right
@@ -41,7 +44,7 @@ init( void )
 
 		//alternate direction
 		alternator *= -1;
-		line_length += .05;   
+		line_length += .025;   
     }
 
     // Create a vertex array object
@@ -97,7 +100,7 @@ main( int argc, char **argv )
 {
     glutInit( &argc, argv );
     glutInitDisplayMode( GLUT_RGBA );
-    glutInitWindowSize( 512, 512 );
+    glutInitWindowSize( 1280, 720 );
 
     // If you are using freeglut, the next two lines will check if 
     // the code is truly 3.2. Otherwise, comment them out
