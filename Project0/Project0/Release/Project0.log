@@ -7,13 +7,13 @@ D:\GitHub\Intro_to_Graphics\OpenGLFiles\AngelFiles\mat.h(730): warning C4244: '=
 D:\GitHub\Intro_to_Graphics\OpenGLFiles\AngelFiles\mat.h(732): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
 D:\GitHub\Intro_to_Graphics\OpenGLFiles\AngelFiles\mat.h(735): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
 D:\GitHub\Intro_to_Graphics\OpenGLFiles\AngelFiles\mat.h(752): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-append_example2.cpp(25): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-append_example2.cpp(34): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-append_example2.cpp(40): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+append_example2.cpp(28): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+append_example2.cpp(37): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+append_example2.cpp(43): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
   Generating code
-  4 of 22 functions (18.2%) were compiled, the rest were copied from previous compilation.
+  0 of 22 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+    1 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Project0.vcxproj -> D:\GitHub\Intro_to_Graphics\Project0\Release\Project0.exe
   Project0.vcxproj -> D:\GitHub\Intro_to_Graphics\Project0\Release\Project0.pdb (Full PDB)
