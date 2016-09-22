@@ -15,10 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="append_example2.cpp">
+    <ClCompile Include="InitShader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="InitShader.cpp">
+    <ClCompile Include="append_example4.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,5 +35,13 @@
     <ClInclude Include="..\vec.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="fshader_a4.glsl">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="vshader_a4.glsl">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
