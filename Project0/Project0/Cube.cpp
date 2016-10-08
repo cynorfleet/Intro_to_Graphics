@@ -1,7 +1,6 @@
 #include "Cube.h"
 
 
-
 Cube::Cube()
 {
 	colorcube();
