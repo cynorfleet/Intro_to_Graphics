@@ -1,39 +1,48 @@
 #pragma once
 #include "Angel.h"
+#include <fstream>
+#include <vector>
+
+using namespace std;
 
 typedef Angel::vec4  color4;
 typedef Angel::vec4  point4;
+typedef Angel::vec4  norm4;
 
 //	This class will hold the vertex data necessary to construct a cube
 static class Vert_array_object
 {
 public:
-	Vert_array_object();
+	Vert_array_object(string obj_filename, string mesh);
 	~Vert_array_object();
 
 protected:
-	// Vertices of a unit cube centered at origin, sides aligned with axes
-	point4 vertices[8] = {
-		point4(-0.5, -0.5,  0.5, 1.0),
-		point4(-0.5,  0.5,  0.5, 1.0),
-		point4(0.5,  0.5,  0.5, 1.0),
-		point4(0.5, -0.5,  0.5, 1.0),
-		point4(-0.5, -0.5, -0.5, 1.0),
-		point4(-0.5,  0.5, -0.5, 1.0),
-		point4(0.5,  0.5, -0.5, 1.0),
-		point4(0.5, -0.5, -0.5, 1.0)
-	};
+	string mesh_name;
+
+	ifstream infile;
+
+	void ReadStream_line();
+
+	vec4 Parse_Data();
+
+	void Find_Start();
+
+	void load(GLuint program);
+
+	// Vertices of the object
+	vector<point4> vertices;
 
 	// RGBA Colors
-	color4 vertex_colors[8] = {
-		color4(0.0, 0.0, 0.0, 1.0),  // black
-		color4(1.0, 0.0, 0.0, 1.0),  // red
-		color4(1.0, 1.0, 0.0, 1.0),  // yellow
-		color4(0.0, 1.0, 0.0, 1.0),  // green
-		color4(0.0, 0.0, 1.0, 1.0),  // blue
-		color4(1.0, 0.0, 1.0, 1.0),  // magenta
-		color4(1.0, 1.0, 1.0, 1.0),  // white
-		color4(0.0, 1.0, 1.0, 1.0)   // cyan
-	};
-};
+	vector<color4> vertex_colors;
 
+	// Normals of the object's vertices
+	vector<norm4> vertex_normals;
+
+	// Faces of the object
+	vector<norm4> faces;
+
+	// Stream Stuff
+	static const int BUFFSIZE = 80;
+	char buff[BUFFSIZE];
+
+};

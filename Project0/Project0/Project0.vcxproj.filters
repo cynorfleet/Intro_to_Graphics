@@ -56,4 +56,12 @@
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Object Include="cube.obj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="cubeobj.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+  </ItemGroup>
 </Project>

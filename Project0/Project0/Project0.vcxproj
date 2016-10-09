@@ -134,6 +134,12 @@
     <None Include="fshader_a4.glsl" />
     <None Include="vshader_a4.glsl" />
   </ItemGroup>
+  <ItemGroup>
+    <Object Include="cube.obj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="cubeobj.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

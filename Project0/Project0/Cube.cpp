@@ -1,20 +1,14 @@
 #include "Cube.h"
-
-
+#include <iostream>
+#include <sstream>
 
 Cube::Cube()
 {
-	colorcube();
+
 }
 
 void Cube::colorcube()
 {
-	quad(1, 0, 3, 2);
-	quad(2, 3, 7, 6);
-	quad(3, 0, 4, 7);
-	quad(6, 5, 1, 2);
-	quad(4, 5, 6, 7);
-	quad(5, 4, 0, 1);
 }
 
 void Cube::quad(int a, int b, int c, int d)
