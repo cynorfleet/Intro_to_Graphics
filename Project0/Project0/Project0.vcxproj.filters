@@ -24,9 +24,6 @@
     <ClCompile Include="Vert_array_object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Cube.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Angel.h">
@@ -44,9 +41,6 @@
     <ClInclude Include="Vert_array_object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Cube.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="fshader_a4.glsl">
@@ -55,9 +49,6 @@
     <None Include="vshader_a4.glsl">
       <Filter>Source Files</Filter>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Object Include="cube.obj" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="cubeobj.txt">

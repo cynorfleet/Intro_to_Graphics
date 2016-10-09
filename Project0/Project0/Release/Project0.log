@@ -1,4 +1,4 @@
-﻿  append_example4.cpp
+﻿  Vert_array_object.cpp
 d:\github\intro_to_graphics\project0\project0\Angel.h(63): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
 C:\OpenGLFiles\AngelFiles\mat.h(707): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
 C:\OpenGLFiles\AngelFiles\mat.h(708): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
@@ -7,56 +7,13 @@ C:\OpenGLFiles\AngelFiles\mat.h(730): warning C4244: '=': conversion from 'doubl
 C:\OpenGLFiles\AngelFiles\mat.h(732): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
 C:\OpenGLFiles\AngelFiles\mat.h(735): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
 C:\OpenGLFiles\AngelFiles\mat.h(752): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\github\intro_to_graphics\project0\project0\Vert_array_object.h(46): warning C4091: 'static ': ignored on left of 'Vert_array_object' when no variable is declared
-append_example4.cpp(22): error C2512: 'Cube': no appropriate default constructor available
-  d:\github\intro_to_graphics\project0\project0\Cube.h(6): note: see declaration of 'Cube'
-append_example4.cpp(23): error C2664: 'Vert_array_object::Vert_array_object(const Vert_array_object &)': cannot convert argument 1 from 'const char [12]' to 'const Vert_array_object &'
-  append_example4.cpp(23): note: Reason: cannot convert from 'const char [12]' to 'const Vert_array_object'
-  append_example4.cpp(23): note: No constructor could take the source type, or constructor overload resolution was ambiguous
-append_example4.cpp(95): warning C4305: '+=': truncation from 'double' to 'GLfloat'
-  Cube.cpp
-d:\github\intro_to_graphics\project0\project0\Angel.h(63): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-C:\OpenGLFiles\AngelFiles\mat.h(707): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-C:\OpenGLFiles\AngelFiles\mat.h(708): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-C:\OpenGLFiles\AngelFiles\mat.h(709): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-C:\OpenGLFiles\AngelFiles\mat.h(730): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-C:\OpenGLFiles\AngelFiles\mat.h(732): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-C:\OpenGLFiles\AngelFiles\mat.h(735): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-C:\OpenGLFiles\AngelFiles\mat.h(752): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\github\intro_to_graphics\project0\project0\Vert_array_object.h(46): warning C4091: 'static ': ignored on left of 'Vert_array_object' when no variable is declared
-Cube.cpp(6): error C2512: 'Vert_array_object': no appropriate default constructor available
-  d:\github\intro_to_graphics\project0\project0\Vert_array_object.h(14): note: see declaration of 'Vert_array_object'
-Cube.cpp(16): error C2440: '=': cannot convert from 'Angel::vec4' to 'GLfloat'
-  Cube.cpp(16): note: No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
-Cube.cpp(17): error C2440: '=': cannot convert from 'Angel::vec4' to 'GLfloat'
-  Cube.cpp(17): note: No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
-Cube.cpp(18): error C2440: '=': cannot convert from 'Angel::vec4' to 'GLfloat'
-  Cube.cpp(18): note: No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
-Cube.cpp(19): error C2440: '=': cannot convert from 'Angel::vec4' to 'GLfloat'
-  Cube.cpp(19): note: No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
-Cube.cpp(20): error C2440: '=': cannot convert from 'Angel::vec4' to 'GLfloat'
-  Cube.cpp(20): note: No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
-Cube.cpp(21): error C2440: '=': cannot convert from 'Angel::vec4' to 'GLfloat'
-  Cube.cpp(21): note: No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
-Cube.cpp(48): error C2065: 'NumVertices': undeclared identifier
-  InitShader.cpp
-d:\github\intro_to_graphics\project0\project0\Angel.h(63): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-C:\OpenGLFiles\AngelFiles\mat.h(707): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-C:\OpenGLFiles\AngelFiles\mat.h(708): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-C:\OpenGLFiles\AngelFiles\mat.h(709): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-C:\OpenGLFiles\AngelFiles\mat.h(730): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-C:\OpenGLFiles\AngelFiles\mat.h(732): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-C:\OpenGLFiles\AngelFiles\mat.h(735): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-C:\OpenGLFiles\AngelFiles\mat.h(752): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-  Vert_array_object.cpp
-d:\github\intro_to_graphics\project0\project0\Angel.h(63): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-C:\OpenGLFiles\AngelFiles\mat.h(707): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-C:\OpenGLFiles\AngelFiles\mat.h(708): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-C:\OpenGLFiles\AngelFiles\mat.h(709): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-C:\OpenGLFiles\AngelFiles\mat.h(730): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-C:\OpenGLFiles\AngelFiles\mat.h(732): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-C:\OpenGLFiles\AngelFiles\mat.h(735): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-C:\OpenGLFiles\AngelFiles\mat.h(752): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\github\intro_to_graphics\project0\project0\Vert_array_object.h(46): warning C4091: 'static ': ignored on left of 'Vert_array_object' when no variable is declared
-Vert_array_object.cpp(79): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-Vert_array_object.cpp(71): warning C4101: 'num': unreferenced local variable
+d:\github\intro_to_graphics\project0\project0\Vert_array_object.h(51): warning C4091: 'static ': ignored on left of 'Vert_array_object' when no variable is declared
+Vert_array_object.cpp(81): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+Vert_array_object.cpp(73): warning C4101: 'num': unreferenced local variable
+  Generating code
+  4 of 173 functions ( 2.3%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    5 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  Project0.vcxproj -> D:\GitHub\Intro_to_Graphics\Project0\Release\Project0.exe
+  Project0.vcxproj -> D:\GitHub\Intro_to_Graphics\Project0\Release\Project0.pdb (Full PDB)

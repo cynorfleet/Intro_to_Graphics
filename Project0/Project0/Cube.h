@@ -9,6 +9,8 @@ class Cube :
 public:
 	Cube(string obj);
 
+	Cube();
+
 	// generate 12 triangles: 36 vertices and 36 colors
 	void colorcube();
 	void quad(int a, int b, int c, int d);

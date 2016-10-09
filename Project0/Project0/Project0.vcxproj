@@ -118,7 +118,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="append_example4.cpp" />
-    <ClCompile Include="Cube.cpp" />
     <ClCompile Include="InitShader.cpp" />
     <ClCompile Include="Vert_array_object.cpp" />
   </ItemGroup>
@@ -127,15 +126,11 @@
     <ClInclude Include="..\CheckError.h" />
     <ClInclude Include="..\mat.h" />
     <ClInclude Include="..\vec.h" />
-    <ClInclude Include="Cube.h" />
     <ClInclude Include="Vert_array_object.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="fshader_a4.glsl" />
     <None Include="vshader_a4.glsl" />
-  </ItemGroup>
-  <ItemGroup>
-    <Object Include="cube.obj" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="cubeobj.txt" />

@@ -13,7 +13,10 @@ typedef Angel::vec4  norm4;
 static class Vert_array_object
 {
 public:
-	Vert_array_object(string obj_filename, string mesh);
+	Vert_array_object();
+	Vert_array_object(string obj_filename);
+	void load(GLuint program);
+	void draw();
 	~Vert_array_object();
 
 protected:
@@ -27,19 +30,19 @@ protected:
 
 	void Find_Start();
 
-	void load(GLuint program);
+
 
 	// Vertices of the object
-	vector<point4> vertices;
+	point4 vertices;
 
 	// RGBA Colors
-	vector<color4> vertex_colors;
+	color4 vertex_colors;
 
 	// Normals of the object's vertices
-	vector<norm4> vertex_normals;
+	norm4 vertex_normals;
 
 	// Faces of the object
-	vector<norm4> faces;
+	norm4 faces;
 
 	// Stream Stuff
 	static const int BUFFSIZE = 80;
