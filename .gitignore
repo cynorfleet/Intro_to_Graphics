@@ -1,6 +1,7 @@
 # Visual Studio cache files
 *.VC.db
 *.VC.opendb
+*.db
 
 # Windows image file caches
 Thumbs.db
