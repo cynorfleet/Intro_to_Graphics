@@ -18,7 +18,7 @@ int      Axis = Xaxis;
 GLfloat  Theta[NumAxes] = { 0.0, 0.0, 0.0 };
 
 GLuint  theta;  // The location of the "theta" shader uniform variable
-Vert_array_object cubeobject("cube.obj");
+Vert_array_object cubeobject("cubeobj.txt");
 
 //----------------------------------------------------------------------------
 

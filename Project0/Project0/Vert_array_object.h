@@ -29,7 +29,7 @@ protected:
 	vec4 Parse_Data();
 
 	void Parse_Face();
-	void Find_Start();
+	void Find_Mesh();
 
 
 

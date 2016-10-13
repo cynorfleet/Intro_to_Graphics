@@ -11,7 +11,7 @@ Vert_array_object::Vert_array_object()
 	infile.open("cube.obj");
 
 	//	Traverse file until we get to the data
-	Find_Start();
+	Find_Mesh();
 	ReadStream_line();
 }
 
@@ -22,7 +22,7 @@ Vert_array_object::Vert_array_object(string obj_filename)
 	infile.open(obj_filename);
 
 	//	Traverse file until we get to the data
-	Find_Start();
+	Find_Mesh();
 	ReadStream_line();
 }
 
@@ -60,12 +60,14 @@ void Vert_array_object::ReadStream_line()
 		//	If its a new mesh, then do it all over again
 		else if (temp == "o")
 		{
+			stringstream ss;
 			//	Read line in file
 			infile.getline(buff, BUFFSIZE);
+			ss.str(buff);
 			//	Turn the line to a string
-			temp = buff;
+			ss >> temp;
 			//	Store mesh_name
-			mesh_name = buff;
+			mesh_name = temp;
 			// ADD CODE TO ADD NEW VERTEX VECTOR HERE
 		}
 		else
@@ -97,14 +99,20 @@ void Vert_array_object::Parse_Face()
 		ss >> indexarray[i + 1];
 }
 
-void Vert_array_object::Find_Start()
+void Vert_array_object::Find_Mesh()
 {
-	for(int i=0; i <4;i++)
+	stringstream ss;
+	string ameshname;
+	do
 	{
 		//	Read line in file
 		infile.getline(buff, BUFFSIZE);
 		//	Keep traversing file until mesh name found
-	}
+		ss.str(buff);
+		ameshname = ss.str();
+	} while (ameshname.substr(0,2) != "o ");
+	mesh_name = ameshname.substr(2);
+	cout << "MESH NAME: " << mesh_name;
 }
 
 void Vert_array_object::load(GLuint program)
