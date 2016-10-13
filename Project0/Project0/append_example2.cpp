@@ -86,9 +86,9 @@ main( int argc, char **argv )
     glutInitDisplayMode( GLUT_RGBA );
     glutInitWindowSize( 512, 512 );
 
-    // If you are using freeglut, the next two lines will check if 
+    // If you are using freeglut, the next two lines will check if
     // the code is truly 3.2. Otherwise, comment them out
-    
+
     glutInitContextVersion( 3, 2 );
     glutInitContextProfile( GLUT_CORE_PROFILE );
 

@@ -18,7 +18,7 @@ int      Axis = Xaxis;
 GLfloat  Theta[NumAxes] = { 0.0, 0.0, 0.0 };
 
 GLuint  theta;  // The location of the "theta" shader uniform variable
-Vert_array_object cubeobject("cubeobj.txt");
+Vert_array_object cubeobject("cube.obj");
 
 //----------------------------------------------------------------------------
 
@@ -43,6 +43,7 @@ init()
 
 	glEnable(GL_DEPTH_TEST);
 	glClearColor(1.0, 1.0, 1.0, 1.0);
+	
 }
 
 //----------------------------------------------------------------------------
@@ -56,6 +57,8 @@ display(void)
 	cubeobject.draw();
 
 	glutSwapBuffers();
+
+
 }
 
 //----------------------------------------------------------------------------
@@ -119,6 +122,7 @@ main(int argc, char **argv)
 	glutKeyboardFunc(keyboard);
 	glutMouseFunc(mouse);
 	glutIdleFunc(idle);
+	
 
 	glutMainLoop();
 	return 0;

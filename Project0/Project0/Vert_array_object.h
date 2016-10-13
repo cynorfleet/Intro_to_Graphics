@@ -28,21 +28,22 @@ protected:
 
 	vec4 Parse_Data();
 
+	void Parse_Face();
 	void Find_Start();
 
 
 
 	// Vertices of the object
-	point4 vertices;
+	vector<point4> vertices;
 
 	// RGBA Colors
-	color4 vertex_colors;
+	vector<color4> vertex_colors;
 
 	// Normals of the object's vertices
-	norm4 vertex_normals;
+	vector<norm4> vertex_normals;
 
 	// Faces of the object
-	norm4 faces;
+	vector<int> indexarray;
 
 	// Stream Stuff
 	static const int BUFFSIZE = 80;

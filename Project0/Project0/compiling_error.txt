@@ -1,0 +1,3 @@
+In file included from C:\Users\kumin\GitHub\Intro_to_Graphics\Project0\Project0\append_example4.cpp:9:0:
+C:\Users\kumin\GitHub\Intro_to_Graphics\Project0\Project0\Angel.h:38:23: fatal error: GL/glew.h: No such file or directory
+compilation terminated.
