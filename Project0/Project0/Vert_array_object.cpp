@@ -94,9 +94,27 @@ vec4 Vert_array_object::Parse_Data()
 void Vert_array_object::Parse_Face()
 {
 	stringstream ss;
+	char bs;
+	int temp = 0;
 	infile.getline(buff, BUFFSIZE);
-	for (int i = 0; i < 3; i++)
-		ss >> indexarray[i + 1];
+	ss.str(buff);
+	do
+	{
+		ss >> temp;
+			indexvertex.push_back(temp);
+		ss >> bs;
+
+		if (isdigit(ss.peek()))
+			ss >> temp;
+		else
+			temp = 0;
+		indextexture.push_back(temp);
+		ss >> bs;
+
+		ss >> temp;
+		indexnormal.push_back(temp);
+
+	} while (!ss.eof());
 }
 
 void Vert_array_object::Find_Mesh()
@@ -117,14 +135,23 @@ void Vert_array_object::Find_Mesh()
 
 void Vert_array_object::load(GLuint program)
 {
+	int vao_size = vertices.size() * 16;
+	int num_verticies = vertices.size();
 	// Create and initialize a buffer object
 	GLuint buffer;
 	glGenBuffers(1, &buffer);
 	glBindBuffer(GL_ARRAY_BUFFER, buffer);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices) * 16 + sizeof(vertex_colors),
-		NULL, GL_DYNAMIC_DRAW);
-	glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices.data());
-	glBufferSubData(GL_ARRAY_BUFFER, sizeof(vertices), sizeof(vertex_colors), vertex_colors.data());
+	glBufferData(GL_ARRAY_BUFFER, vao_size*2,
+		NULL, GL_STATIC_DRAW);
+	glBufferSubData(GL_ARRAY_BUFFER, 0,vao_size, &vertices[0]);
+	glBufferSubData(GL_ARRAY_BUFFER, vao_size, vao_size, &vertex_colors);
+
+	//	ElEMENT ARRay STUFF
+	glGenBuffers(1, &Ibuffer);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, Ibuffer);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexvertex.size() * 4, &indexvertex[0], GL_STATIC_DRAW);
+
+
 	// set up vertex arrays
 	GLuint vPosition = glGetAttribLocation(program, "vPosition");
 	glEnableVertexAttribArray(vPosition);
@@ -134,10 +161,13 @@ void Vert_array_object::load(GLuint program)
 	GLuint vColor = glGetAttribLocation(program, "vColor");
 	glEnableVertexAttribArray(vColor);
 	glVertexAttribPointer(vColor, 4, GL_FLOAT, GL_FALSE, 0,
-		BUFFER_OFFSET(sizeof(vertices)));
+		BUFFER_OFFSET(sizeof(vertices)*16));
 }
 
 void Vert_array_object::draw()
 {
 //	glDrawElements(GL_TRIANGLES, 0, 36);
+glBindVertexArray(buffer);
+glBindVertexArray(Ibuffer);
+glDrawElements(GL_TRIANGLES, indexvertex.size(), GL_UNSIGNED_INT, 0);
 }

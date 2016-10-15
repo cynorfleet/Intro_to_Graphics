@@ -48,6 +48,8 @@ init()
 
 //----------------------------------------------------------------------------
 
+int frame, fps, time, timebase = 0;
+
 void
 display(void)
 {
@@ -55,6 +57,17 @@ display(void)
 
 	glUniform3fv(theta, 1, Theta);
 	cubeobject.draw();
+
+	frame++;
+	time = glutGet(GLUT_ELAPSED_TIME);
+	char display_string[100];
+	if (time - timebase > 1000) {
+		fps = frame*1000.0 / (time - timebase);
+		sprintf_s(display_string, "FPS : %d ", fps);
+		glutSetWindowTitle(display_string);
+		timebase = time;
+		frame = 0;
+	}
 
 	glutSwapBuffers();
 
@@ -93,7 +106,7 @@ mouse(int button, int state, int x, int y)
 void
 idle(void)
 {
-	Theta[Axis] += 0.01;
+	Theta[Axis] += 0.03;
 
 	if (Theta[Axis] > 360.0) {
 		Theta[Axis] -= 360.0;
@@ -113,6 +126,8 @@ main(int argc, char **argv)
 	glutInitContextVersion(3, 2);
 	glutInitContextProfile(GLUT_CORE_PROFILE);
 	glutCreateWindow("Color Cube");
+
+	glewExperimental = GL_TRUE;
 
 	glewInit();
 

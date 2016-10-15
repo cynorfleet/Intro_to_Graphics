@@ -32,6 +32,7 @@ protected:
 	void Find_Mesh();
 
 
+	GLuint buffer, Ibuffer;
 
 	// Vertices of the object
 	vector<point4> vertices;
@@ -43,7 +44,13 @@ protected:
 	vector<norm4> vertex_normals;
 
 	// Faces of the object
-	vector<int> indexarray;
+	vector<GLuint> indexvertex;
+
+	//	indices for Normals
+	vector<GLuint> indexnormal;
+
+	//	indices for textures
+	vector<GLuint> indextexture;
 
 	// Stream Stuff
 	static const int BUFFSIZE = 80;
