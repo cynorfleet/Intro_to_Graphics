@@ -43,16 +43,16 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="fshader_a4.glsl">
-      <Filter>Source Files</Filter>
-    </None>
-    <None Include="vshader_a4.glsl">
-      <Filter>Source Files</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <Text Include="cubeobj.txt">
       <Filter>Source Files</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="fshader_a2.glsl">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="vshader_a2.glsl">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

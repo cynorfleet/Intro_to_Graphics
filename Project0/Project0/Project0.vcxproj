@@ -129,11 +129,11 @@
     <ClInclude Include="Vert_array_object.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="fshader_a4.glsl" />
-    <None Include="vshader_a4.glsl" />
+    <Text Include="cubeobj.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="cubeobj.txt" />
+    <None Include="fshader_a2.glsl" />
+    <None Include="vshader_a2.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

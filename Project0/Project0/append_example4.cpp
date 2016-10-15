@@ -140,5 +140,6 @@ main(int argc, char **argv)
 	
 
 	glutMainLoop();
+	system("pause");
 	return 0;
 }
