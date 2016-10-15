@@ -35,9 +35,13 @@ init()
 
 	// Load shaders and use the resulting shader program
 	GLuint program = InitShader("vshader_a4.glsl", "fshader_a4.glsl");
+
+
 	glUseProgram(program);
 
+
 	cubeobject.load(program);
+
 
 	theta = glGetUniformLocation(program, "theta");
 
@@ -48,8 +52,6 @@ init()
 
 //----------------------------------------------------------------------------
 
-int frame, fps, time, timebase = 0;
-
 void
 display(void)
 {
@@ -57,17 +59,6 @@ display(void)
 
 	glUniform3fv(theta, 1, Theta);
 	cubeobject.draw();
-
-	frame++;
-	time = glutGet(GLUT_ELAPSED_TIME);
-	char display_string[100];
-	if (time - timebase > 1000) {
-		fps = frame*1000.0 / (time - timebase);
-		sprintf_s(display_string, "FPS : %d ", fps);
-		glutSetWindowTitle(display_string);
-		timebase = time;
-		frame = 0;
-	}
 
 	glutSwapBuffers();
 
@@ -106,7 +97,7 @@ mouse(int button, int state, int x, int y)
 void
 idle(void)
 {
-	Theta[Axis] += 0.03;
+	Theta[Axis] += 0.01;
 
 	if (Theta[Axis] > 360.0) {
 		Theta[Axis] -= 360.0;
@@ -140,6 +131,5 @@ main(int argc, char **argv)
 	
 
 	glutMainLoop();
-	system("pause");
 	return 0;
 }

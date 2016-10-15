@@ -23,7 +23,14 @@ Vert_array_object::Vert_array_object(string obj_filename)
 
 	//	Traverse file until we get to the data
 	Find_Mesh();
+	cout << "MESH NAME: " << mesh_name << '\n';
+	system("pause");
 	ReadStream_line();
+	cout << "Verticies: " << vertices.size() << '\n';
+	cout << "Normals: " << vertex_normals.size() << '\n';
+	cout << "Vert Index: " << indexvertex.size() << '\n';
+	cout << "Norm Index: " << indexnormal.size() << '\n';
+	system("pause");
 }
 
 Vert_array_object::~Vert_array_object()
@@ -38,7 +45,6 @@ void Vert_array_object::ReadStream_line()
 		infile.getline(buff, BUFFSIZE, ' ');
 		//	Turn the line to a string
 		string temp = buff;
-		cout << "\ntemp = " << temp;
 
 		//	If 1st char on line is v its a Vertex
 		if (temp == "v")
@@ -69,6 +75,7 @@ void Vert_array_object::ReadStream_line()
 			//	Store mesh_name
 			mesh_name = temp;
 			// ADD CODE TO ADD NEW VERTEX VECTOR HERE
+			cout << "MESH NAME: " << mesh_name << '\n';
 		}
 		else
 			//	Read line in file
@@ -130,7 +137,6 @@ void Vert_array_object::Find_Mesh()
 		ameshname = ss.str();
 	} while (ameshname.substr(0,2) != "o ");
 	mesh_name = ameshname.substr(2);
-	cout << "MESH NAME: " << mesh_name;
 }
 
 void Vert_array_object::load(GLuint program)

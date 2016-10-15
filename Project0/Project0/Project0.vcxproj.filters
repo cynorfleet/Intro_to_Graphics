@@ -47,12 +47,4 @@
       <Filter>Source Files</Filter>
     </Text>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="fshader_a2.glsl">
-      <Filter>Source Files</Filter>
-    </None>
-    <None Include="vshader_a2.glsl">
-      <Filter>Source Files</Filter>
-    </None>
-  </ItemGroup>
 </Project>
