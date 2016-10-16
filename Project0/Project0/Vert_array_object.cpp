@@ -30,7 +30,7 @@ Vert_array_object::Vert_array_object(string obj_filename)
 	cout << "Normals: " << vertex_normals.size() << '\n';
 	cout << "Vert Index: " << indexvertex.size() << '\n';
 	cout << "Norm Index: " << indexnormal.size() << '\n';
-	system("pause");
+
 
 }
 

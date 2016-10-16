@@ -66,7 +66,7 @@ display(void)
 	char display_string[100];
 	if (time - timebase > 1000) {
 		fps = frame*1000.0 / (time - timebase);
-		sprintf_s(display_string, "Simpson's rotating cube : FPS:%d ", fps);
+		sprintf_s(display_string, "Chris's Rotating Object : FPS:%d ", fps);
 		glutSetWindowTitle(display_string);
 		timebase = time;
 		frame = 0;
@@ -143,6 +143,7 @@ main(int argc, char **argv)
 	
 
 	glutMainLoop();
-
+	cout << "END";
+	system("pause");
 	return 0;
 }
