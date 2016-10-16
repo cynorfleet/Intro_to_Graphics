@@ -12,6 +12,7 @@ Vert_array_object::Vert_array_object()
 
 	//	Traverse file until we get to the data
 	Find_Mesh();
+
 	ReadStream_line();
 }
 
@@ -24,13 +25,13 @@ Vert_array_object::Vert_array_object(string obj_filename)
 	//	Traverse file until we get to the data
 	Find_Mesh();
 	cout << "MESH NAME: " << mesh_name << '\n';
-	system("pause");
 	ReadStream_line();
 	cout << "Verticies: " << vertices.size() << '\n';
 	cout << "Normals: " << vertex_normals.size() << '\n';
 	cout << "Vert Index: " << indexvertex.size() << '\n';
 	cout << "Norm Index: " << indexnormal.size() << '\n';
 	system("pause");
+
 }
 
 Vert_array_object::~Vert_array_object()
@@ -60,6 +61,9 @@ void Vert_array_object::ReadStream_line()
 		//	If 1st char on line is f its a face
 		else if (temp == "f")
 		{
+			/*indexvertex.push_back(0);
+			indextexture.push_back(0);
+			indexnormal.push_back(0);*/
 			Parse_Face();
 		}
 
@@ -108,18 +112,12 @@ void Vert_array_object::Parse_Face()
 	do
 	{
 		ss >> temp;
-			indexvertex.push_back(temp);
+			indexvertex.push_back((temp)-1);
 		ss >> bs;
-
-		if (isdigit(ss.peek()))
-			ss >> temp;
-		else
-			temp = 0;
-		indextexture.push_back(temp);
 		ss >> bs;
 
 		ss >> temp;
-		indexnormal.push_back(temp);
+		indexnormal.push_back((temp)-1);
 
 	} while (!ss.eof());
 }
@@ -150,12 +148,12 @@ void Vert_array_object::load(GLuint program)
 	glBufferData(GL_ARRAY_BUFFER, vao_size*2,
 		NULL, GL_STATIC_DRAW);
 	glBufferSubData(GL_ARRAY_BUFFER, 0,vao_size, &vertices[0]);
-	glBufferSubData(GL_ARRAY_BUFFER, vao_size, vao_size, &vertex_colors);
+	glBufferSubData(GL_ARRAY_BUFFER, vao_size, vao_size, &vertices[0]);
 
 	//	ElEMENT ARRay STUFF
 	glGenBuffers(1, &Ibuffer);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, Ibuffer);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexvertex.size() * 4, &indexvertex[0], GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, 36 * 4, &indexvertex[0], GL_STATIC_DRAW);
 
 
 	// set up vertex arrays
@@ -167,7 +165,7 @@ void Vert_array_object::load(GLuint program)
 	GLuint vColor = glGetAttribLocation(program, "vColor");
 	glEnableVertexAttribArray(vColor);
 	glVertexAttribPointer(vColor, 4, GL_FLOAT, GL_FALSE, 0,
-		BUFFER_OFFSET(sizeof(vertices)*16));
+		BUFFER_OFFSET(vao_size));
 }
 
 void Vert_array_object::draw()

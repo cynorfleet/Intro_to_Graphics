@@ -4,7 +4,7 @@
 //
 //	Colors are assigned to each vertex and then the rasterizer interpolates
 //   those colors across the triangles.  We us an orthographic projection
-//   as the default projetion.
+//   as the default projection.
 
 #include "Angel.h"
 #include "Vert_array_object.h"
@@ -47,11 +47,11 @@ init()
 
 	glEnable(GL_DEPTH_TEST);
 	glClearColor(1.0, 1.0, 1.0, 1.0);
-	
+	cout << "\n\nGL CLEAR COLOR\n";	
 }
 
 //----------------------------------------------------------------------------
-
+int frame, fps, time, timebase = 0;
 void
 display(void)
 {
@@ -59,6 +59,18 @@ display(void)
 
 	glUniform3fv(theta, 1, Theta);
 	cubeobject.draw();
+
+	// Timing etc
+	frame++;
+	time = glutGet(GLUT_ELAPSED_TIME);
+	char display_string[100];
+	if (time - timebase > 1000) {
+		fps = frame*1000.0 / (time - timebase);
+		sprintf_s(display_string, "Simpson's rotating cube : FPS:%d ", fps);
+		glutSetWindowTitle(display_string);
+		timebase = time;
+		frame = 0;
+	}
 
 	glutSwapBuffers();
 
@@ -97,7 +109,7 @@ mouse(int button, int state, int x, int y)
 void
 idle(void)
 {
-	Theta[Axis] += 0.01;
+	Theta[Axis] += 0.03;
 
 	if (Theta[Axis] > 360.0) {
 		Theta[Axis] -= 360.0;
@@ -131,5 +143,6 @@ main(int argc, char **argv)
 	
 
 	glutMainLoop();
+
 	return 0;
 }
