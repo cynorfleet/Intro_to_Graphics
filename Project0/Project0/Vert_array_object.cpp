@@ -137,15 +137,17 @@ void Vert_array_object::Find_Mesh()
 	mesh_name = ameshname.substr(2);
 }
 
-void Vert_array_object::load(GLuint program)
+int Vert_array_object::load(GLuint program)
 {
+	vertices.shrink_to_fit();
+	indexvertex.shrink_to_fit();
 	int vao_size = vertices.size() * 16;
 	int num_verticies = vertices.size();
 	// Create and initialize a buffer object
 	GLuint buffer;
 	glGenBuffers(1, &buffer);
 	glBindBuffer(GL_ARRAY_BUFFER, buffer);
-	glBufferData(GL_ARRAY_BUFFER, vao_size*2,
+	glBufferData(GL_ARRAY_BUFFER, vao_size + vao_size,
 		NULL, GL_STATIC_DRAW);
 	glBufferSubData(GL_ARRAY_BUFFER, 0,vao_size, &vertices[0]);
 	glBufferSubData(GL_ARRAY_BUFFER, vao_size, vao_size, &vertices[0]);
@@ -153,7 +155,7 @@ void Vert_array_object::load(GLuint program)
 	//	ElEMENT ARRay STUFF
 	glGenBuffers(1, &Ibuffer);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, Ibuffer);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, 36 * 4, &indexvertex[0], GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexvertex.size() * 4, &indexvertex[0], GL_STATIC_DRAW);
 
 
 	// set up vertex arrays
@@ -166,6 +168,8 @@ void Vert_array_object::load(GLuint program)
 	glEnableVertexAttribArray(vColor);
 	glVertexAttribPointer(vColor, 4, GL_FLOAT, GL_FALSE, 0,
 		BUFFER_OFFSET(vao_size));
+
+	return 0;
 }
 
 void Vert_array_object::draw()

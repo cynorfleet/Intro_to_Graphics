@@ -109,7 +109,7 @@ mouse(int button, int state, int x, int y)
 void
 idle(void)
 {
-	Theta[Axis] += 0.03;
+	Theta[Axis] += 0.01;
 
 	if (Theta[Axis] > 360.0) {
 		Theta[Axis] -= 360.0;

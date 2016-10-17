@@ -15,7 +15,7 @@ static class Vert_array_object
 public:
 	Vert_array_object();
 	Vert_array_object(string obj_filename);
-	void load(GLuint program);
+	int load(GLuint program);
 	void draw();
 	~Vert_array_object();
 
