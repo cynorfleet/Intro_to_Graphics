@@ -7,7 +7,7 @@
 //   as the default projection.
 
 #include "Angel.h"
-#include "Vert_array_object.h"
+#include "Object.h"
 
 #pragma comment(lib, "freeglut")
 #pragma comment(lib, "glew32")
@@ -18,7 +18,8 @@ int      Axis = Xaxis;
 GLfloat  Theta[NumAxes] = { 0.0, 0.0, 0.0 };
 
 GLuint  theta;  // The location of the "theta" shader uniform variable
-Vert_array_object cubeobject("cube.obj");
+string modelnames[] = { "megatron.obj", "batman.obj", "cube.obj" };
+Object model("megatron.obj");
 
 //----------------------------------------------------------------------------
 
@@ -40,14 +41,14 @@ init()
 	glUseProgram(program);
 
 
-	cubeobject.load(program);
+	model.load(program);
 
 
 	theta = glGetUniformLocation(program, "theta");
 
 	glEnable(GL_DEPTH_TEST);
 	glClearColor(1.0, 1.0, 1.0, 1.0);
-	cout << "\n\nGL CLEAR COLOR\n";	
+
 }
 
 //----------------------------------------------------------------------------
@@ -58,7 +59,7 @@ display(void)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glUniform3fv(theta, 1, Theta);
-	cubeobject.draw();
+	model.draw();
 
 	// Timing etc
 	frame++;

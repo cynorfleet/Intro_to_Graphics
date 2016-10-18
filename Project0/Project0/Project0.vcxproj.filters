@@ -21,7 +21,7 @@
     <ClCompile Include="append_example4.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Vert_array_object.cpp">
+    <ClCompile Include="Object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -38,7 +38,7 @@
     <ClInclude Include="..\vec.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Vert_array_object.h">
+    <ClInclude Include="Object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

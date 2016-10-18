@@ -1,0 +1,53 @@
+# Blender MTL File: 'None'
+# Material Count: 4
+
+newmtl BatmanEye_Mat
+Ns 9.803922
+Ka 1.000000 1.000000 1.000000
+Kd 0.588000 0.588000 0.588000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd C:\Users\kumin\Documents\Mesh\Batman\Texture\BatmanEye_D.tga
+map_Bump  C:\\Users\\kumin\\Documents\\Mesh\\Batman\\Texture\\BatmanEye_N_2.tga
+map_Ka  C:\\Users\\kumin\\Documents\\Mesh\\Batman\\Texture\\BatmanEye_D.tga
+
+newmtl Batman_Armoured_Body_Mat
+Ns 9.803922
+Ka 1.000000 1.000000 1.000000
+Kd 0.588000 0.588000 0.588000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd C:\Users\kumin\Documents\Mesh\Batman\Texture\BatmanArmoured_Body_D.tga
+map_Bump  C:\\Users\\kumin\\Documents\\Mesh\\Batman\\Texture\\BatmanArmoured_Body_N.tga
+map_Ka  C:\\Users\\kumin\\Documents\\Mesh\\Batman\\Texture\\BatmanArmoured_Body_D.tga
+map_Ks  C:\\Users\\kumin\\Documents\\Mesh\\Batman\\Texture\\BatmanArmoured_Body_S.tga
+
+newmtl Batman_Armoured_Head_Mat
+Ns 9.803922
+Ka 1.000000 1.000000 1.000000
+Kd 0.588000 0.588000 0.588000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd C:\Users\kumin\Documents\Mesh\Batman\Texture\BatmanArmoured_Head_D.tga
+map_Bump  C:\\Users\\kumin\\Documents\\Mesh\\Batman\\Texture\\BatmanArmoured_Head_N.tga
+map_Ka  C:\\Users\\kumin\\Documents\\Mesh\\Batman\\Texture\\BatmanArmoured_Head_D.tga
+map_Ks  C:\\Users\\kumin\\Documents\\Mesh\\Batman\\Texture\\BatmanArmoured_Head_S.tga
+
+newmtl wire_174186203
+Ns 31.372549
+Ka 0.735948 0.735948 0.735948
+Kd 0.682353 0.729412 0.796079
+Ks 0.350000 0.350000 0.350000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
