@@ -1,25 +1,4 @@
-﻿  InitShader.cpp
-c:\intrographics\intro_to_graphics\project0\project0\Angel.h(63): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-C:\OpenGLFiles\AngelFiles\mat.h(707): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-C:\OpenGLFiles\AngelFiles\mat.h(708): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-C:\OpenGLFiles\AngelFiles\mat.h(709): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-C:\OpenGLFiles\AngelFiles\mat.h(730): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-C:\OpenGLFiles\AngelFiles\mat.h(732): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-C:\OpenGLFiles\AngelFiles\mat.h(735): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-C:\OpenGLFiles\AngelFiles\mat.h(752): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-  Object.cpp
-c:\intrographics\intro_to_graphics\project0\project0\Angel.h(63): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-C:\OpenGLFiles\AngelFiles\mat.h(707): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-C:\OpenGLFiles\AngelFiles\mat.h(708): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-C:\OpenGLFiles\AngelFiles\mat.h(709): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-C:\OpenGLFiles\AngelFiles\mat.h(730): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-C:\OpenGLFiles\AngelFiles\mat.h(732): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-C:\OpenGLFiles\AngelFiles\mat.h(735): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-C:\OpenGLFiles\AngelFiles\mat.h(752): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-Object.cpp(17): warning C4101: 'texture': unreferenced local variable
-Object.cpp(17): warning C4101: 'normal': unreferenced local variable
-Object.cpp(17): warning C4101: 'vert': unreferenced local variable
-  append_example4.cpp
+﻿  append_example4.cpp
 c:\intrographics\intro_to_graphics\project0\project0\Angel.h(63): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
 C:\OpenGLFiles\AngelFiles\mat.h(707): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
 C:\OpenGLFiles\AngelFiles\mat.h(708): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
@@ -31,9 +10,9 @@ C:\OpenGLFiles\AngelFiles\mat.h(752): warning C4244: '=': conversion from 'doubl
 append_example4.cpp(69): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
 append_example4.cpp(113): warning C4305: '+=': truncation from 'double' to 'GLfloat'
   Generating code
-  9 of 348 functions ( 2.6%) were compiled, the rest were copied from previous compilation.
+  4 of 348 functions ( 1.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    34 functions had inline decision re-evaluated but remain unchanged
+    8 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Project0.vcxproj -> C:\IntroGraphics\Intro_to_Graphics\Project0\Release\Project0.exe
   Project0.vcxproj -> C:\IntroGraphics\Intro_to_Graphics\Project0\Release\Project0.pdb (Full PDB)

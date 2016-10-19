@@ -43,7 +43,7 @@ map_Ka  C:\\Users\\kumin\\Documents\\Mesh\\Batman\\Texture\\BatmanArmoured_Head_
 map_Ks  C:\\Users\\kumin\\Documents\\Mesh\\Batman\\Texture\\BatmanArmoured_Head_S.tga
 
 newmtl wire_174186203
-Ns 31.372549
+Ns 29.411765
 Ka 0.735948 0.735948 0.735948
 Kd 0.682353 0.729412 0.796079
 Ks 0.350000 0.350000 0.350000
