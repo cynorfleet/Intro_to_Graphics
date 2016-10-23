@@ -132,7 +132,7 @@ void Object::draw()
 {
 	glBindVertexArray(buffer);
 	glBindVertexArray(Ibuffer);
-	glDrawElements(GL_TRIANGLES, vertIndices.size(), GL_UNSIGNED_INT, 0);
+	glDrawArrays(GL_LINE_STRIP, 0, vertices.size());
 }
 
 //----------------------------------------------------------------------------
