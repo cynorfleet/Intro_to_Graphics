@@ -126,12 +126,26 @@ idle(void)
 
 //----------------------------------------------------------------------------
 
+void
+_LoadModels()
+	/*-------------------------------------------- _LoadModels -----------
+	|  Function 	_LoadModels()
+	|
+	|  Purpose: 	Will populate vector with model objects generated from
+	|				the names provided in modelnames.
+	|
+	|  Returns:  	N/A
+	*-------------------------------------------------------------------*/
+{
+	if (model.size() == 0)
+		for (int i = 0; i < modelname.size(); i++)
+			model.push_back(Object(modelname[i]));
+}
+
 int
 main(int argc, char **argv)
 {
-	if (model.size() == 0)
-		for(int i=0; i < modelname.size(); i++)
-			model.push_back(Object(modelname[i]));
+	_LoadModels();
 
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH);
