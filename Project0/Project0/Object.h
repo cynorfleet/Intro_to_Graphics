@@ -14,7 +14,6 @@ class Object
 {
 	ifstream objectfile;
 	string instream;
-	string meshname;
 	vector<vec4>vertices;
 	vector<vec4> normals;
 	vector<GLuint> vertIndices;
@@ -25,8 +24,10 @@ class Object
 
 public:
 	Object();
+	Object(const Object & other);
 	Object(string file_name);
 	vec4 ParseData();
+	string meshname;
 	void ParseFace();
 	~Object();
 	int load(GLuint);
