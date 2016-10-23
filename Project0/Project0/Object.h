@@ -25,6 +25,8 @@ class Object
 public:
 	Object();
 	Object(const Object & other);
+	void _LoadProgress(string filename);
+	void _LoadData(string file_name);
 	Object(string file_name);
 	vec4 ParseData();
 	string meshname;
@@ -32,4 +34,5 @@ public:
 	~Object();
 	int load(GLuint);
 	void draw();
+	int progressscaler;
 };

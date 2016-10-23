@@ -1,6 +1,6 @@
 //	Christian Norfleet
-//	Program 2
-//	Display a color cube
+//	Program 4
+//	Display a preloaded object
 //
 //	Colors are assigned to each vertex and then the rasterizer interpolates
 //   those colors across the triangles.  We us an orthographic projection
