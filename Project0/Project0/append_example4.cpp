@@ -18,8 +18,8 @@ int      Axis = Xaxis;
 GLfloat  Theta[NumAxes] = { 0.0, 0.0, 0.0 };
 
 GLuint  theta;  // The location of the "theta" shader uniform variable
-string modelnames[] = { "megatron.obj", "batman.obj", "cube.obj", "IronMan.obj", "bb8.obj" };
-Object model("bb8.obj");
+string modelnames[] = { "megatron.obj", "batman.obj", "cube.obj", "IronMan.obj", "bb8.obj", "millenium-falcon.obj" };
+Object model("millenium-falcon.obj");
 
 //----------------------------------------------------------------------------
 
