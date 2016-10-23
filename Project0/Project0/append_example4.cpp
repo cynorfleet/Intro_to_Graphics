@@ -18,9 +18,9 @@ int      Axis = Xaxis;
 GLfloat  Theta[NumAxes] = { 0.0, 0.0, 0.0 };
 
 GLuint  theta;  // The location of the "theta" shader uniform variable
-string modelnames[] = { "megatron.obj", "batman.obj", "cube.obj", "IronMan.obj", "bb8.obj", "millenium-falcon.obj" };
-Object model("millenium-falcon.obj");
-
+vector<string> modelname = { "megatron.obj", "batman.obj", "cube.obj", "bb8.obj", "millenium-falcon.obj" };
+vector <Object> model;
+int activemodel = 0;
 //----------------------------------------------------------------------------
 
 //----------------------------------------------------------------------------
@@ -41,7 +41,7 @@ init()
 	glUseProgram(program);
 
 
-	model.load(program);
+	model[activemodel].load(program);
 
 
 	theta = glGetUniformLocation(program, "theta");
@@ -56,10 +56,11 @@ int frame, fps, time, timebase = 0;
 void
 display(void)
 {
+	string winowname = model[activemodel].meshname + ": FPS:%d ";
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glUniform3fv(theta, 1, Theta);
-	model.draw();
+	model[activemodel].draw();
 
 	// Timing etc
 	frame++;
@@ -67,7 +68,7 @@ display(void)
 	char display_string[100];
 	if (time - timebase > 1000) {
 		fps = frame*1000.0 / (time - timebase);
-		sprintf_s(display_string, "Chris's Rotating Object : FPS:%d ", fps);
+		sprintf_s(display_string, "PreLoded Models | FPS:%d ", fps);
 		glutSetWindowTitle(display_string);
 		timebase = time;
 		frame = 0;
@@ -84,6 +85,10 @@ void
 keyboard(unsigned char key, int x, int y)
 {
 	switch (key) {
+	case 's': case 'S':
+		activemodel < model.size() -1 ? activemodel++ : activemodel = 0;
+		init();
+		break;
 	case 033: // Escape Key
 	case 'q': case 'Q':
 		exit(EXIT_SUCCESS);
@@ -124,12 +129,16 @@ idle(void)
 int
 main(int argc, char **argv)
 {
+	if (model.size() == 0)
+		for(int i=0; i < modelname.size(); i++)
+			model.push_back(Object(modelname[i]));
+
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH);
 	glutInitWindowSize(512, 512);
 	glutInitContextVersion(3, 2);
 	glutInitContextProfile(GLUT_CORE_PROFILE);
-	glutCreateWindow("Color Cube");
+	glutCreateWindow("PreLoded Models");
 
 	glewExperimental = GL_TRUE;
 

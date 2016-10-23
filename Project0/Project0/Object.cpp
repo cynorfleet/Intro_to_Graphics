@@ -4,6 +4,25 @@ Object::Object()
 {
 
 }
+
+Object::Object(const Object& other)
+{
+	instream = other.instream;
+	meshname = other.meshname;
+	vertices = other.vertices;
+	normals = other.normals;
+	vertIndices = other.vertIndices;
+	textureIndicies = other.textureIndicies;
+	normIndices = other.normIndices;
+
+	buffer = other.buffer;
+	Ibuffer = other.Ibuffer;
+
+
+
+
+}
+
 Object::Object(string file_name)
 {
 	
@@ -14,9 +33,14 @@ Object::Object(string file_name)
 	}
 	else {
 		meshname = file_name;
+		cout << "LOADING MESH:\t" << meshname;
 		int vert, texture, normal;
+		int progress = 0;
 
 		while (getline(objectfile, instream)) {
+			progress++;
+			if(progress%5000 == 0)
+			cout << ".";
 			if (instream.substr(0, 2) == "v ")
 			{
 				vertices.push_back(ParseData());
@@ -31,6 +55,7 @@ Object::Object(string file_name)
 			}
 		}
 	}
+	cout << " DONE\n";
 }
 
 vec4 Object::ParseData()
