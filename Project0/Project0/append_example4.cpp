@@ -19,9 +19,10 @@ int      Axis = Xaxis;
 GLfloat  Theta[NumAxes] = { 0.0, 0.0, 0.0 };
 
 GLuint  theta;  // The location of the "theta" shader uniform variable
-vector<string> modelname = { "megatron.obj", "batman.obj", "cube.obj", "bb8.obj" };
+vector<string> modelname = { "megatron.obj", "batman.obj", "cube.obj", "bb8.obj", "ironmanmarkII.obj" };
 vector <Object> model;
 int activemodel = 0;
+bool wire_toggle;
 //----------------------------------------------------------------------------
 
 //----------------------------------------------------------------------------
@@ -82,6 +83,7 @@ display(void)
 
 //----------------------------------------------------------------------------
 
+bool wirestate = true;
 void
 keyboard(unsigned char key, int x, int y)
 {
@@ -89,6 +91,10 @@ keyboard(unsigned char key, int x, int y)
 	case 's': case 'S':
 		activemodel < model.size() -1 ? activemodel++ : activemodel = 0;
 		init();
+		break;
+	case 'w':
+		glPolygonMode(GL_FRONT_AND_BACK, (wirestate) ? GL_LINE : GL_FILL);
+		wirestate = !wirestate;
 		break;
 	case 033: // Escape Key
 	case 'q': case 'Q':
@@ -165,7 +171,7 @@ main(int argc, char **argv)
 	glutKeyboardFunc(keyboard);
 	glutMouseFunc(mouse);
 	glutIdleFunc(idle);
-	
+
 
 	glutMainLoop();
 	cout << "END";

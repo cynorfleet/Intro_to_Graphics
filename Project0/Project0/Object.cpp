@@ -53,7 +53,7 @@ else {
 
 	while (getline(objectfile, instream)) {
 		progress++;
-	if (objectfile.tellg() % progressscaler == 100 )
+	if (objectfile.tellg() % progressscaler == 0 )
 			cout << ".";
 		if (instream.substr(0, 2) == "v ")
 		{
