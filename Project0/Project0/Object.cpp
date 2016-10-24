@@ -1,9 +1,14 @@
 #include "Object.h"
+# include <cmath>
+# include <string>
+# include <fstream>
+# include <iomanip>
+#include <thread>
 
 Object::Object()
 {
-
 }
+
 
 Object::Object(const Object& other)
 {
@@ -17,45 +22,60 @@ Object::Object(const Object& other)
 
 	buffer = other.buffer;
 	Ibuffer = other.Ibuffer;
+}
 
+void Object::_LoadProgress(string file_name)
+{
+	ifstream scalerfile;
+	int length;
+	scalerfile.open(file_name);
+if (scalerfile) {
+	// get length of file:
+	scalerfile.seekg(0, scalerfile.end);
+	length = scalerfile.tellg();
+	scalerfile.seekg(0, scalerfile.beg);
+	progressscaler = (length/350);
+	}
+}
 
+void Object::_LoadData(string file_name)
+{
+objectfile.open(file_name);
+if (!objectfile)
+{
+	cerr << "ERROR: WRONG FILE NAME " << file_name;
+}
+else {
+	meshname = file_name;
+	cout << "LOADING MESH:\t" << meshname;
+	int vert, texture, normal;
+	int progress = 0;
 
-
+	while (getline(objectfile, instream)) {
+		progress++;
+	if (objectfile.tellg() % progressscaler == 0 )
+			cout << ".";
+		if (instream.substr(0, 2) == "v ")
+		{
+			vertices.push_back(ParseData());
+		}
+		if (instream.substr(0, 2) == "vn")
+		{
+			normals.push_back(ParseData());
+		}
+		if (instream.substr(0, 2) == "f ")
+		{
+			ParseFace();
+		}
+	}
+}
+cout << " DONE\n";
 }
 
 Object::Object(string file_name)
 {
-	
-	objectfile.open(file_name);
-	if (!objectfile)
-	{
-		cerr << "ERROR: WRONG FILE NAME " << file_name;
-	}
-	else {
-		meshname = file_name;
-		cout << "LOADING MESH:\t" << meshname;
-		int vert, texture, normal;
-		int progress = 0;
-
-		while (getline(objectfile, instream)) {
-			progress++;
-			if(progress%5000 == 0)
-			cout << ".";
-			if (instream.substr(0, 2) == "v ")
-			{
-				vertices.push_back(ParseData());
-			}
-			if (instream.substr(0, 2) == "vn")
-			{
-				normals.push_back(ParseData());
-			}
-			if (instream.substr(0, 2) == "f ")
-			{
-				ParseFace();
-			}
-		}
-	}
-	cout << " DONE\n";
+	_LoadProgress(file_name);
+	_LoadData(file_name);
 }
 
 vec4 Object::ParseData()
@@ -67,7 +87,7 @@ vec4 Object::ParseData()
 	ss << instream;
 	ss >> junk >> vertdata[0] >> vertdata[1] >> vertdata[2];
 	vertdata[3] = 1;
-	ss.str(""); 
+	ss.str("");
 	ss.clear();
 	return vertdata;
 }

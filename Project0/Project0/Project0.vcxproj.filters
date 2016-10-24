@@ -47,4 +47,9 @@
       <Filter>Source Files</Filter>
     </Text>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="vshader_a4.glsl">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
 </Project>

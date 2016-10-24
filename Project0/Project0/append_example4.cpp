@@ -1,6 +1,6 @@
 //	Christian Norfleet
-//	Program 2
-//	Display a color cube
+//	Program 4
+//	Display a preloaded object
 //
 //	Colors are assigned to each vertex and then the rasterizer interpolates
 //   those colors across the triangles.  We us an orthographic projection
@@ -8,6 +8,7 @@
 
 #include "Angel.h"
 #include "Object.h"
+
 
 #pragma comment(lib, "freeglut")
 #pragma comment(lib, "glew32")
@@ -18,7 +19,7 @@ int      Axis = Xaxis;
 GLfloat  Theta[NumAxes] = { 0.0, 0.0, 0.0 };
 
 GLuint  theta;  // The location of the "theta" shader uniform variable
-vector<string> modelname = { "megatron.obj", "batman.obj", "cube.obj", "bb8.obj", "millenium-falcon.obj" };
+vector<string> modelname = { "megatron.obj", "batman.obj", "cube.obj", "bb8.obj", "ironmanmarkII.obj" };
 vector <Object> model;
 int activemodel = 0;
 //----------------------------------------------------------------------------
@@ -81,6 +82,7 @@ display(void)
 
 //----------------------------------------------------------------------------
 
+bool wirestate = true;
 void
 keyboard(unsigned char key, int x, int y)
 {
@@ -88,6 +90,10 @@ keyboard(unsigned char key, int x, int y)
 	case 's': case 'S':
 		activemodel < model.size() -1 ? activemodel++ : activemodel = 0;
 		init();
+		break;
+	case 'w':
+		glPolygonMode(GL_FRONT_AND_BACK, (wirestate) ? GL_LINE : GL_FILL);
+		wirestate = !wirestate;
 		break;
 	case 033: // Escape Key
 	case 'q': case 'Q':
@@ -126,12 +132,26 @@ idle(void)
 
 //----------------------------------------------------------------------------
 
+void
+_LoadModels()
+	/*-------------------------------------------- _LoadModels -----
+	|  Function 	_LoadModels()
+	|
+	|  Purpose: 	Will populate vector with model objects generated from
+	|				the names provided in modelnames.
+	|
+	|  Returns:  	N/A
+	*-------------------------------------------------------------------*/
+{
+	if (model.size() == 0)
+		for (int i = 0; i < modelname.size(); i++)
+			model.push_back(Object(modelname[i]));
+}
+
 int
 main(int argc, char **argv)
 {
-	if (model.size() == 0)
-		for(int i=0; i < modelname.size(); i++)
-			model.push_back(Object(modelname[i]));
+	_LoadModels();
 
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH);
@@ -150,7 +170,7 @@ main(int argc, char **argv)
 	glutKeyboardFunc(keyboard);
 	glutMouseFunc(mouse);
 	glutIdleFunc(idle);
-	
+
 
 	glutMainLoop();
 	cout << "END";

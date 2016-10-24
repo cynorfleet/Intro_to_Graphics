@@ -2,6 +2,7 @@
 *.VC.db
 *.VC.opendb
 *.db
+*.suo
 
 # Windows image file caches
 Thumbs.db
