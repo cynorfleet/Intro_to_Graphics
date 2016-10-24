@@ -9,6 +9,7 @@
 #include "Angel.h"
 #include "Object.h"
 
+
 #pragma comment(lib, "freeglut")
 #pragma comment(lib, "glew32")
 
@@ -128,7 +129,7 @@ idle(void)
 
 void
 _LoadModels()
-	/*-------------------------------------------- _LoadModels -----------
+	/*-------------------------------------------- _LoadModels -----
 	|  Function 	_LoadModels()
 	|
 	|  Purpose: 	Will populate vector with model objects generated from
