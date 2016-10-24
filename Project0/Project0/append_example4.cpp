@@ -22,7 +22,6 @@ GLuint  theta;  // The location of the "theta" shader uniform variable
 vector<string> modelname = { "megatron.obj", "batman.obj", "cube.obj", "bb8.obj", "ironmanmarkII.obj" };
 vector <Object> model;
 int activemodel = 0;
-bool wire_toggle;
 //----------------------------------------------------------------------------
 
 //----------------------------------------------------------------------------
