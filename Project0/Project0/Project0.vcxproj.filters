@@ -51,5 +51,6 @@
     <None Include="vshader_a4.glsl">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="..\Release\ProgressBar.dll" />
   </ItemGroup>
 </Project>

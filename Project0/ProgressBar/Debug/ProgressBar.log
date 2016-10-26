@@ -1,0 +1,9 @@
+﻿  Stdafx.cpp
+  AssemblyInfo.cpp
+  ProgressBar.cpp
+ProgressBar.cpp(30): warning C4244: '=': conversion from 'std::streamoff' to 'int', possible loss of data
+  Generating Code...
+  .NETFramework,Version=v4.5.2.AssemblyAttributes.cpp
+  AssemblyInfo.obj : /DEBUG:FASTLINK is not supported when managed code is present; restarting link with /DEBUG:FULL
+  ProgressBar.vcxproj -> C:\Users\kumin\GitHub\Intro_to_Graphics\Project0\Debug\ProgressBar.dll
+  ProgressBar.vcxproj -> C:\Users\kumin\GitHub\Intro_to_Graphics\Project0\Debug\ProgressBar.pdb (Partial PDB)

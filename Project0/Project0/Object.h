@@ -22,8 +22,15 @@ class Object
 
 	GLuint buffer, Ibuffer;
 
+
+	typedef int(*FNPTR)(string);
+	int progressscaler;
+	HINSTANCE hInst;
+	FNPTR fn;
+
 public:
 	Object();
+	void LoadDLL();
 	Object(const Object & other);
 	void _LoadProgress(string filename);
 	void _LoadData(string file_name);
@@ -34,5 +41,4 @@ public:
 	~Object();
 	int load(GLuint);
 	void draw();
-	int progressscaler;
 };

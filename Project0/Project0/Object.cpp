@@ -4,6 +4,9 @@
 # include <fstream>
 # include <iomanip>
 #include <thread>
+#include <Windows.h>
+
+
 
 Object::Object()
 {
@@ -29,12 +32,13 @@ void Object::_LoadProgress(string file_name)
 	ifstream scalerfile;
 	int length;
 	scalerfile.open(file_name);
-if (scalerfile) {
-	// get length of file:
-	scalerfile.seekg(0, scalerfile.end);
-	length = scalerfile.tellg();
-	scalerfile.seekg(0, scalerfile.beg);
-	progressscaler = (length/350);
+	if (scalerfile) 
+	{
+		// get length of file:
+		scalerfile.seekg(0, scalerfile.end);
+		length = scalerfile.tellg();
+		scalerfile.seekg(0, scalerfile.beg);
+		progressscaler = (length/350);
 	}
 }
 
@@ -74,6 +78,9 @@ cout << " DONE\n";
 
 Object::Object(string file_name)
 {
+	//experimental dll function
+	//progressscaler = fn(file_name);
+
 	_LoadProgress(file_name);
 	_LoadData(file_name);
 }
@@ -159,4 +166,21 @@ void Object::draw()
 
 Object::~Object()
 {
+}
+
+void Object::LoadDLL()
+{
+	hInst = LoadLibrary("C:\\Users\\kumin\\GitHub\\Intro_to_Graphics\\Project0\\Release\\ProgressBar.dll");
+
+	if (!hInst)
+	{
+		cout << "\nCould not load DLL\n";
+	}
+
+	// Resolve the function address
+	fn = (FNPTR)GetProcAddress(hInst, "GETSIZE");
+	if (!fn)
+	{
+		cout << "\nCould not resolve function address\n";
+	}
 }

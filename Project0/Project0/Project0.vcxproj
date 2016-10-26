@@ -73,7 +73,7 @@
     <LibraryPath>C:\OpenGLFiles\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>C:\OpenGLFiles\AngelFiles;C:\OpenGLFiles\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\kumin\GitHub\Intro_to_Graphics\Project0\Project0\Release;C:\OpenGLFiles\AngelFiles;C:\OpenGLFiles\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\OpenGLFiles\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -135,6 +135,7 @@
     <Text Include="cubeobj.txt" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\Release\ProgressBar.dll" />
     <None Include="vshader_a4.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

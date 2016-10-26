@@ -1,0 +1,5 @@
+﻿  ProgressBar.cpp
+ProgressBar.cpp(37): warning C4244: '=': conversion from 'std::streamoff' to 'int', possible loss of data
+     Creating library C:\Users\kumin\GitHub\Intro_to_Graphics\Project0\Release\ProgressBar.lib and object C:\Users\kumin\GitHub\Intro_to_Graphics\Project0\Release\ProgressBar.exp
+  ProgressBar.vcxproj -> C:\Users\kumin\GitHub\Intro_to_Graphics\Project0\Release\ProgressBar.dll
+  ProgressBar.vcxproj -> C:\Users\kumin\GitHub\Intro_to_Graphics\Project0\Release\ProgressBar.pdb (Full PDB)
