@@ -22,6 +22,8 @@ GLuint  theta;  // The location of the "theta" shader uniform variable
 vector<string> modelname = {"cube.obj", "bb8.obj", "megatron.obj", "batman.obj", "ironmanmarkII.obj"};
 vector <Object> model;
 int activemodel = 0;
+// Load shaders and use the resulting shader program
+	GLuint program;
 //----------------------------------------------------------------------------
 
 //----------------------------------------------------------------------------
@@ -35,8 +37,7 @@ init()
 	glGenVertexArrays(1, &vao);
 	glBindVertexArray(vao);
 
-	// Load shaders and use the resulting shader program
-	GLuint program = InitShader("vshader_a4.glsl", "fshader_a4.glsl");
+	program = InitShader("vshader_a4.glsl", "fshader_a4.glsl");
 
 	glUseProgram(program);
 
@@ -85,7 +86,8 @@ keyboard(unsigned char key, int x, int y)
 	switch (key) {
 	case 's': case 'S':
 		activemodel < model.size() -1 ? activemodel++ : activemodel = 0;
-		init();
+		model[activemodel].load(program);
+		model[activemodel].draw();
 		break;
 	case 'w':
 		glPolygonMode(GL_FRONT_AND_BACK, (wirestate) ? GL_LINE : GL_FILL);
