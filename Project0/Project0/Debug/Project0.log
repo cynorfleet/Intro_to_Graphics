@@ -8,6 +8,7 @@ c:\users\kumin\github\intro_to_graphics\project0\project0\mat.h(723): warning C4
 c:\users\kumin\github\intro_to_graphics\project0\project0\mat.h(726): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
 c:\users\kumin\github\intro_to_graphics\project0\project0\mat.h(743): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
 c:\users\kumin\github\intro_to_graphics\project0\project0\object.cpp(36): warning C4244: '=': conversion from 'std::streamoff' to 'int', possible loss of data
+c:\users\kumin\github\intro_to_graphics\project0\project0\object.cpp(38): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
 c:\users\kumin\github\intro_to_graphics\project0\project0\object.cpp(52): warning C4101: 'texture': unreferenced local variable
 c:\users\kumin\github\intro_to_graphics\project0\project0\object.cpp(52): warning C4101: 'normal': unreferenced local variable
 c:\users\kumin\github\intro_to_graphics\project0\project0\object.cpp(52): warning C4101: 'vert': unreferenced local variable

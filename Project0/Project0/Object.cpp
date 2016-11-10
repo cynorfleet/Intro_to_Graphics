@@ -35,7 +35,7 @@ if (scalerfile) {
 	scalerfile.seekg(0, scalerfile.end);
 	length = scalerfile.tellg();
 	scalerfile.seekg(0, scalerfile.beg);
-	progressscaler = (length/350);
+	progressscaler = (length*.1);
 	}
 }
 
@@ -54,7 +54,7 @@ else {
 
 	while (getline(objectfile, instream)) {
 		progress++;
-	if (objectfile.tellg() % progressscaler == 0 )
+	if (objectfile.tellg() % progressscaler <= 100 )
 			cout << ".";
 		if (instream.substr(0, 2) == "v ")
 		{
