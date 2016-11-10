@@ -7,6 +7,7 @@
 #include<string>
 #include<fstream>
 #include<sstream>
+#include <algorithm>
 
 using namespace std;
 
@@ -81,11 +82,18 @@ struct bounding
 	|  Returns:  	String
 	*-------------------------------------------------------------------*/
 	{
-		return	"----------------------------------------\n"
-				"X_Min = " + to_string(x_min) + "\tX_Max = " + to_string(x_max) + '\n' +
-				"Y_Min = " + to_string(y_min) + "\tY_Max = " + to_string(y_max) + '\n' +
-				"Z_Min = " + to_string(z_min) + "\tZ_Max = " + to_string(z_max) + '\n' +
-				"----------------------------------------\n\n";
+		string output = "----------------------------------------\n";
+
+		//	If any of the min/max values leave suggested bounds (-1,1)
+		if (any_of((&x_min), (&x_max + 3), [](GLfloat i) {return i < -1.0 || i > 1.0; }))
+			output += "WARNING: EXCEEDED SUGGESTED BOUNDS (-1,1)\n\n";
+
+		output +=
+			"X_Min = " + to_string(x_min) + "\tX_Max = " + to_string(x_max) + '\n' +
+			"Y_Min = " + to_string(y_min) + "\tY_Max = " + to_string(y_max) + '\n' +
+			"Z_Min = " + to_string(z_min) + "\tZ_Max = " + to_string(z_max) + '\n' +
+			"----------------------------------------\n\n";
+		return output;
 	}
 
 	//  --- Indexing Operator ---
