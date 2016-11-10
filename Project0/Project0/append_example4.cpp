@@ -19,7 +19,7 @@ int      Axis = Xaxis;
 GLfloat  Theta[NumAxes] = { 0.0, 0.0, 0.0 };
 
 GLuint  theta;  // The location of the "theta" shader uniform variable
-vector<string> modelname = { "megatron.obj", "batman.obj", "cube.obj", "bb8.obj", "ironmanmarkII.obj" };
+vector<string> modelname = {"cube.obj", "bb8.obj", "megatron.obj", "batman.obj", "ironmanmarkII.obj"};
 vector <Object> model;
 int activemodel = 0;
 bool wire_toggle;
@@ -39,18 +39,14 @@ init()
 	// Load shaders and use the resulting shader program
 	GLuint program = InitShader("vshader_a4.glsl", "fshader_a4.glsl");
 
-
 	glUseProgram(program);
 
-
 	model[activemodel].load(program);
-
 
 	theta = glGetUniformLocation(program, "theta");
 
 	glEnable(GL_DEPTH_TEST);
 	glClearColor(1.0, 1.0, 1.0, 1.0);
-
 }
 
 //----------------------------------------------------------------------------
@@ -139,7 +135,7 @@ _LoadModels()
 	|  Function 	_LoadModels()
 	|
 	|  Purpose: 	Will populate vector with model objects generated from
-	|				the names provided in modelnames.
+	|				the names provided in model names.
 	|
 	|  Returns:  	N/A
 	*-------------------------------------------------------------------*/
@@ -171,7 +167,6 @@ main(int argc, char **argv)
 	glutKeyboardFunc(keyboard);
 	glutMouseFunc(mouse);
 	glutIdleFunc(idle);
-
 
 	glutMainLoop();
 	cout << "END";

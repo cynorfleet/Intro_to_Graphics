@@ -19,6 +19,7 @@ Object::Object(const Object& other)
 	vertIndices = other.vertIndices;
 	textureIndicies = other.textureIndicies;
 	normIndices = other.normIndices;
+	pointarray = other.pointarray;
 
 	buffer = other.buffer;
 	Ibuffer = other.Ibuffer;
@@ -58,6 +59,8 @@ else {
 		if (instream.substr(0, 2) == "v ")
 		{
 			vertices.push_back(ParseData());
+			//	Find Min/Max
+			bounds(vertices.back());
 		}
 		if (instream.substr(0, 2) == "vn")
 		{
@@ -69,13 +72,15 @@ else {
 		}
 	}
 }
-cout << " DONE\n";
+	MakeArray();
+	cout << " DONE\n";
 }
 
 Object::Object(string file_name)
 {
 	_LoadProgress(file_name);
 	_LoadData(file_name);
+	cout << bounds.ToString();
 }
 
 vec4 Object::ParseData()
@@ -111,27 +116,37 @@ void Object::ParseFace()
 			textureIndicies.push_back(texture - 1);
 		}
 		ss >> morejunk >> normal;
-		vertIndices.push_back(vertex-1);
-		normIndices.push_back(normal-1);
+		vertIndices.push_back(vertex - 1);
+		normIndices.push_back(normal - 1);
 	}
 	ss.str("");
 	ss.clear();
+}
+
+void Object::MakeArray()
+{
+	for (int i = 0; i < vertIndices.size(); i++)
+		pointarray.push_back(vertices[vertIndices[i]]);
 }
 
 //----------------------------------------------------------------------------
 
 int Object::load(GLuint program)
 {
-	int size = vertices.size() * 16;
+	int size = pointarray.size() * 16;
 	glGenBuffers(1, &buffer);
+
 	glBindBuffer(GL_ARRAY_BUFFER, buffer);
 	glBufferData(GL_ARRAY_BUFFER, size + size, NULL, GL_STATIC_DRAW);
-	glBufferSubData(GL_ARRAY_BUFFER, 0, size, &vertices[0]);
-	glBufferSubData(GL_ARRAY_BUFFER, size, size, &vertices[0]);
 
-	glGenBuffers(1, &Ibuffer);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, Ibuffer);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, vertIndices.size() * 4, &vertIndices[0], GL_STATIC_DRAW);
+	glBufferSubData(GL_ARRAY_BUFFER, 0, size, &pointarray[0]);
+	glBufferSubData(GL_ARRAY_BUFFER, size, size, &pointarray[0]);
+
+	//glGenBuffers(1, &Ibuffer);
+	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, Ibuffer);
+	//glBufferData(GL_ELEMENT_ARRAY_BUFFER, vertIndices.size() * 4, &vertIndices[0], GL_STATIC_DRAW);
+
+
 
 	GLuint vPosition = glGetAttribLocation(program, "vPosition");
 	glEnableVertexAttribArray(vPosition);
@@ -150,9 +165,9 @@ int Object::load(GLuint program)
 
 void Object::draw()
 {
-	glBindVertexArray(buffer);
-	glBindVertexArray(Ibuffer);
-	glDrawElements(GL_TRIANGLES, vertIndices.size(), GL_UNSIGNED_INT, 0);
+	//glBindVertexArray(buffer);
+	//glBindVertexArray(Ibuffer);
+	glDrawArrays(GL_TRIANGLES, 0, pointarray.size());
 }
 
 //----------------------------------------------------------------------------
