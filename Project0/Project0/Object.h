@@ -12,7 +12,7 @@ using namespace std;
 
 struct bounding
 {
-	float x_min, y_min, z_min, x_max, y_max, z_max;
+	GLfloat x_min, y_min, z_min, x_max, y_max, z_max;
 
 	//	Default Constructor
 	bounding(GLfloat s = 0.0) :
@@ -25,8 +25,8 @@ struct bounding
 
 	//	Find vec4 min/max Constructor
 	void operator()(const vec4 &vertex_element)
-	/*-------------------------------------------- bounding ------------
-	|  Function 	bounding()
+	/*-------------------------------------------- operator ------------
+	|  Function 	operator()
 	|
 	|  Purpose: 	This will overload the parentheses operator, 
 	|				read in a vec4, and check if it contains x/y/z
