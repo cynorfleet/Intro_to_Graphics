@@ -126,7 +126,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Angel.h" />
-    <ClInclude Include="..\CheckError.h" />
     <ClInclude Include="..\mat.h" />
     <ClInclude Include="..\vec.h" />
     <ClInclude Include="Object.h" />

@@ -18,11 +18,13 @@ axisType axis = X;
 int axisActive = axis;
 
 GLfloat Theta[3] = { 0.0, 0.0, 0.0 };
+GLfloat velocity = DegreesToRadians * 10;
 GLuint modelViewLoc;
 GLuint program;
 GLuint  theta;  // The location of the "theta" shader uniform variable
 vec4 at, up;
 vec4 camera(0.0, 0.0, 5.0, 1);
+vec2 projbox(0.5, 50);
 
 GLuint ProjectionLoc;
 mat4 projection;
@@ -31,6 +33,9 @@ GLfloat projection_near, projection_far, aspectRatio;
 vector<string> modelname = { "cube.obj", "bb8.obj", "megatron.obj", "batman.obj", "ironmanmarkII.obj" };
 vector <Object> model;
 int activemodel = 0;
+
+// Create a vertex array object
+GLuint** vao = new GLuint*[model.size()];
 //----------------------------------------------------------------------------
 
 //----------------------------------------------------------------------------
@@ -44,8 +49,6 @@ init()
 	glUseProgram(program);
 	const int size = model.size();
 	int const num = size;
-	// Create a vertex array object
-	GLuint** vao = new GLuint*[model.size()];
 
 	glGenVertexArrays(model.size, vao[model.size()]);
 
@@ -97,14 +100,18 @@ display(void)
 	mat4 rotate = _RotateFunc(Theta[X], X) * _RotateFunc(Theta[Y], Y)
 		*_RotateFunc(Theta[Z], Z);
 
-	at = model[activemodel].;
+	at = model[activemodel].bounds.Box_Center();
+	up = vec4(0.0, 10.0, 0.0, 0.0);
+	modelview = LookAt(camera, at, up);
 
-	string winowname = model[activemodel].meshname + ": FPS:%d ";
+	modelview *= rotate;
+
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glUniform3fv(theta, 1, Theta);
 	model[activemodel].draw();
 
+	string winowname = model[activemodel].meshname + ": FPS:%d ";
 	// Timing etc
 	frame++;
 	time = glutGet(GLUT_ELAPSED_TIME);
@@ -126,20 +133,47 @@ bool wirestate = true;
 void
 keyboard(unsigned char key, int x, int y)
 {
-	switch (key) {
+	switch (key)
+	{
 	case 's': case 'S':
 		activemodel < model.size() - 1 ? activemodel++ : activemodel = 0;
+		glBindVertexArray(*vao[activemodel]);
+		camera.z = 5.0;
+		Theta[X] = Theta[Y] = Theta[Z] = 0;
 		model[activemodel].draw();
 		break;
+
+	case 'a': case 'A':
+		velocity *= -1;
+		break;
+
+	case 'z': case 'Z':
+		camera.z *= 2;
+		break;
+
 	case 'w':
 		glPolygonMode(GL_FRONT_AND_BACK, (wirestate) ? GL_LINE : GL_FILL);
 		wirestate = !wirestate;
 		break;
+
 	case 033: // Escape Key
 	case 'q': case 'Q':
 		exit(EXIT_SUCCESS);
 		break;
 	}
+
+	model[activemodel].bounds.Box_Max();
+	projection = Perspective(45, aspectRatio, projbox[0], projbox[1]);
+}
+
+void
+reshape(int width, int height)
+{
+	glViewport(0, 0, width, height);
+	aspectRatio = GLfloat(width) / height;
+	model[activemodel].bounds.Box_Max();
+	projection = Perspective(45, aspectRatio, projbox[0], projbox[1]);
+	glUniformMatrix4fv(ProjectionLoc, 1, GL_TRUE, projection);
 }
 
 //----------------------------------------------------------------------------
@@ -149,9 +183,9 @@ mouse(int button, int state, int x, int y)
 {
 	if (state == GLUT_DOWN) {
 		switch (button) {
-		case GLUT_LEFT_BUTTON:    Axis = Xaxis;  break;
-		case GLUT_MIDDLE_BUTTON:  Axis = Yaxis;  break;
-		case GLUT_RIGHT_BUTTON:   Axis = Zaxis;  break;
+		case GLUT_LEFT_BUTTON:    axis = X;  break;
+		case GLUT_MIDDLE_BUTTON:  axis = Y;  break;
+		case GLUT_RIGHT_BUTTON:   axis = Z;  break;
 		}
 	}
 }
@@ -161,12 +195,6 @@ mouse(int button, int state, int x, int y)
 void
 idle(void)
 {
-	Theta[Axis] += 0.01;
-
-	if (Theta[Axis] > 360.0) {
-		Theta[Axis] -= 360.0;
-	}
-
 	glutPostRedisplay();
 }
 
@@ -191,7 +219,7 @@ _LoadModels()
 int
 main(int argc, char **argv)
 {
-	_LoadModels();
+	//_LoadModels();
 
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH);

@@ -29,9 +29,6 @@
     <ClInclude Include="..\Angel.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\CheckError.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\mat.h">
       <Filter>Source Files</Filter>
     </ClInclude>
