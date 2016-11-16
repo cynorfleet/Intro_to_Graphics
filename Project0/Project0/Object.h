@@ -14,6 +14,8 @@ using namespace std;
 struct bounding
 {
 	GLfloat x_min, y_min, z_min, x_max, y_max, z_max;
+	GLfloat box_max;
+	vec4 box_center;
 
 	//	Default Constructor
 	bounding(GLfloat s = 0.0) :
@@ -70,6 +72,39 @@ struct bounding
 	*-------------------------------------------------------------------*/
 	{ x_min = 0, x_max = 0, y_min = 0, y_max = 0, z_min = 0, z_max = 0; }
 
+	vec4 Box_Center()
+	/*-------------------------------------------- Box_Center -----
+	|  Function 	Box_Center()
+	|
+	|  Purpose: 	Finds the center point of the bounding box
+	|
+	|  Returns:  	N/A
+	*-------------------------------------------------------------------*/
+	{
+		box_center[0] = (x_max + x_min) / 2;
+		box_center[1] = (y_max + y_min) / 2;
+		box_center[2] = (z_max + z_min) / 2;
+		box_center[3] = 1;
+
+		return box_center;
+	}
+
+	GLfloat Box_Max()
+	/*-------------------------------------------- Box_Max -----
+	|  Function 	Box_Max()
+	|
+	|  Purpose: 	Finds the Max value in X/Y/Z
+	|
+	|  Returns:  	N/A
+	*-------------------------------------------------------------------*/
+	{
+		box_max = 0;
+		for (int i = 0; i < 3; i++)
+			if ((*(&x_max + i)) > box_max)
+				box_max = *(&x_max + i);
+		return box_max;
+	}
+
 	string ToString()
 	/*-------------------------------------------- ToString ------------
 	|  Function 	ToString()
@@ -92,7 +127,7 @@ struct bounding
 			"X_Min = " + to_string(x_min) + "\tX_Max = " + to_string(x_max) + '\n' +
 			"Y_Min = " + to_string(y_min) + "\tY_Max = " + to_string(y_max) + '\n' +
 			"Z_Min = " + to_string(z_min) + "\tZ_Max = " + to_string(z_max) + '\n' +
-			"----------------------------------------\n\n";
+			"----------------------------------------\n";
 		return output;
 	}
 
@@ -112,7 +147,6 @@ class Object
 	vector<GLuint> textureIndicies;
 	vector<GLuint> normIndices;
 	vector<vec4>pointarray;
-	bounding bounds;
 	GLuint buffer, Ibuffer;
 
 public:
@@ -128,5 +162,6 @@ public:
 	~Object();
 	int load(GLuint);
 	void draw();
+	bounding bounds;
 	int progressscaler;
 };
