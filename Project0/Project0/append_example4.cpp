@@ -19,9 +19,15 @@ int      Axis = Xaxis;
 GLfloat  Theta[NumAxes] = { 0.0, 0.0, 0.0 };
 
 GLuint  theta;  // The location of the "theta" shader uniform variable
-vector<string> modelname = {"cube.obj", "bb8.obj", "megatron.obj", "batman.obj", "ironmanmarkII.obj"};
+vector<string> modelname = {"cube.obj", "bb8.obj", "megatron.obj", "batman.obj"/*, "ironmanmarkII.obj"*/};
 vector <Object> model;
 int activemodel = 0;
+
+//	Eye information	//
+int zeye = 20;
+vec4 eye(0, 0, zeye, 1);
+mat4 model_view;
+
 // Load shaders and use the resulting shader program
 	GLuint program;
 //----------------------------------------------------------------------------
@@ -74,7 +80,12 @@ display(void)
 
 	glutSwapBuffers();
 
-
+	mat4 rot = RotateX(Theta[Xaxis])*Rotate
+		Y(Theta[Yaxis])*RotateZ(Theta[Zaxis]);
+	eye = vec4(0.0, 0.0, zeye, 1.0);
+	model_view = LookAt(eye, model[activemodel].bounds.box_center, model[activemodel].bounds.y_max);
+	model_view *= rot;
+	glUniformMatrix4fv(ModelViewLoc, 1, GL_TRUE, model_view);
 }
 
 //----------------------------------------------------------------------------
@@ -97,6 +108,12 @@ keyboard(unsigned char key, int x, int y)
 	case 'q': case 'Q':
 		exit(EXIT_SUCCESS);
 		break;
+	case 'z': case 'Z':
+		zeye += 5;
+		break;
+	case 'x': case 'X':
+		zeye -= 5;
+		break;
 	}
 }
 
@@ -107,9 +124,9 @@ mouse(int button, int state, int x, int y)
 {
 	if (state == GLUT_DOWN) {
 		switch (button) {
-		case GLUT_LEFT_BUTTON:    Axis = Xaxis;  break;
-		case GLUT_MIDDLE_BUTTON:  Axis = Yaxis;  break;
-		case GLUT_RIGHT_BUTTON:   Axis = Zaxis;  break;
+		case GLUT_LEFT_BUTTON:    Theta[Xaxis] +=5;  break;
+		case GLUT_MIDDLE_BUTTON:  Theta[Yaxis]+=5;  break;
+		case GLUT_RIGHT_BUTTON:   Theta[Zaxis]+=5;  break;
 		}
 	}
 }
@@ -119,12 +136,12 @@ mouse(int button, int state, int x, int y)
 void
 idle(void)
 {
-	Theta[Axis] += 0.01;
+	/*Theta[Axis] += 0.01;
 
 	if (Theta[Axis] > 360.0) {
 		Theta[Axis] -= 360.0;
 	}
-
+	*/
 	glutPostRedisplay();
 }
 

@@ -59,6 +59,7 @@ else {
 		if (instream.substr(0, 2) == "v ")
 		{
 			vertices.push_back(ParseData());
+
 			//	Find Min/Max
 			bounds(vertices.back());
 		}
@@ -81,6 +82,8 @@ Object::Object(string file_name)
 	_LoadProgress(file_name);
 	_LoadData(file_name);
 	cout << bounds.ToString();
+	cout << "BOX_MAX: " << bounds.Box_Max() << '\n';
+	cout << "Center: " << bounds.Box_Center() << "\n\n";
 }
 
 vec4 Object::ParseData()
