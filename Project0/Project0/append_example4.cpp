@@ -40,6 +40,22 @@ GLuint** vao = new GLuint*[model.size()];
 
 //----------------------------------------------------------------------------
 
+void
+_LoadModels()
+/*-------------------------------------------- _LoadModels -----
+|  Function 	_LoadModels()
+|
+|  Purpose: 	Will populate vector with model objects generated from
+|				the names provided in model names.
+|
+|  Returns:  	N/A
+*-------------------------------------------------------------------*/
+{
+	if (model.size() == 0)
+		for (int i = 0; i < modelname.size(); i++)
+			model.push_back(Object(modelname[i]));
+}
+
 // OpenGL initialization
 void
 init()
@@ -47,20 +63,20 @@ init()
 	program = InitShader("vshader_a4.glsl", "fshader_a4.glsl");
 
 	glUseProgram(program);
-	const int size = model.size();
-	int const num = size;
 
-	glGenVertexArrays(model.size, vao[model.size()]);
+	glGenVertexArrays(model.size(), *vao);
 
+	_LoadModels();
 	for (int i = 0; i < model.size(); i++)
 	{
 		glBindVertexArray(*vao[i]);
 		model[i].load(program);
 	}
 
-	model[activemodel].load(program);
+	glBindVertexArray(*vao[activemodel]);
 
-	theta = glGetUniformLocation(program, "theta");
+	ProjectionLoc = glGetUniformLocation(program, "projection");
+	modelViewLoc = glGetUniformLocation(program, "modelViewLoc");
 
 	glEnable(GL_DEPTH_TEST);
 	glClearColor(1.0, 1.0, 1.0, 1.0);
@@ -172,7 +188,7 @@ reshape(int width, int height)
 	glViewport(0, 0, width, height);
 	aspectRatio = GLfloat(width) / height;
 	model[activemodel].bounds.Box_Max();
-	projection = Perspective(45, aspectRatio, projbox[0], projbox[1]);
+	projection = Perspective(45, aspectRatio, model[activemodel].bounds.z_min + 3, model[activemodel].bounds.z_max -10);
 	glUniformMatrix4fv(ProjectionLoc, 1, GL_TRUE, projection);
 }
 
@@ -181,11 +197,19 @@ reshape(int width, int height)
 void
 mouse(int button, int state, int x, int y)
 {
-	if (state == GLUT_DOWN) {
-		switch (button) {
-		case GLUT_LEFT_BUTTON:    axis = X;  break;
-		case GLUT_MIDDLE_BUTTON:  axis = Y;  break;
-		case GLUT_RIGHT_BUTTON:   axis = Z;  break;
+	if (state == GLUT_DOWN) 
+	{
+		switch (button) 
+		{
+			case GLUT_LEFT_BUTTON:    axis = X;  break;
+			case GLUT_MIDDLE_BUTTON:  axis = Y;  break;
+			case GLUT_RIGHT_BUTTON:   axis = Z;  break;
+		}
+
+		Theta[axis] += velocity;
+		if (Theta[axis] > 360.0)
+		{
+			Theta[axis] -= 360.0;
 		}
 	}
 }
@@ -200,21 +224,7 @@ idle(void)
 
 //----------------------------------------------------------------------------
 
-void
-_LoadModels()
-/*-------------------------------------------- _LoadModels -----
-|  Function 	_LoadModels()
-|
-|  Purpose: 	Will populate vector with model objects generated from
-|				the names provided in model names.
-|
-|  Returns:  	N/A
-*-------------------------------------------------------------------*/
-{
-	if (model.size() == 0)
-		for (int i = 0; i < modelname.size(); i++)
-			model.push_back(Object(modelname[i]));
-}
+
 
 int
 main(int argc, char **argv)

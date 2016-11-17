@@ -1,31 +1,11 @@
-﻿  append_example4.cpp
-c:\intrographics\intro_to_graphics\project0\project0\angel.h(63): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-c:\intrographics\intro_to_graphics\project0\project0\mat.h(698): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-c:\intrographics\intro_to_graphics\project0\project0\mat.h(699): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-c:\intrographics\intro_to_graphics\project0\project0\mat.h(700): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-c:\intrographics\intro_to_graphics\project0\project0\mat.h(721): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-c:\intrographics\intro_to_graphics\project0\project0\mat.h(723): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-c:\intrographics\intro_to_graphics\project0\project0\mat.h(726): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-c:\intrographics\intro_to_graphics\project0\project0\mat.h(743): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-c:\openglfiles\angelfiles\checkerror.h(12): fatal error C1083: Cannot open include file: 'GLUT/glut.h': No such file or directory
-  Object.cpp
-c:\intrographics\intro_to_graphics\project0\project0\angel.h(63): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-c:\intrographics\intro_to_graphics\project0\project0\mat.h(698): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-c:\intrographics\intro_to_graphics\project0\project0\mat.h(699): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-c:\intrographics\intro_to_graphics\project0\project0\mat.h(700): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-c:\intrographics\intro_to_graphics\project0\project0\mat.h(721): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-c:\intrographics\intro_to_graphics\project0\project0\mat.h(723): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-c:\intrographics\intro_to_graphics\project0\project0\mat.h(726): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-c:\intrographics\intro_to_graphics\project0\project0\mat.h(743): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-c:\openglfiles\angelfiles\checkerror.h(12): fatal error C1083: Cannot open include file: 'GLUT/glut.h': No such file or directory
-  InitShader.cpp
-c:\intrographics\intro_to_graphics\project0\project0\angel.h(63): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-c:\intrographics\intro_to_graphics\project0\project0\mat.h(698): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-c:\intrographics\intro_to_graphics\project0\project0\mat.h(699): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-c:\intrographics\intro_to_graphics\project0\project0\mat.h(700): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-c:\intrographics\intro_to_graphics\project0\project0\mat.h(721): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-c:\intrographics\intro_to_graphics\project0\project0\mat.h(723): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-c:\intrographics\intro_to_graphics\project0\project0\mat.h(726): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-c:\intrographics\intro_to_graphics\project0\project0\mat.h(743): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-c:\openglfiles\angelfiles\checkerror.h(12): fatal error C1083: Cannot open include file: 'GLUT/glut.h': No such file or directory
-  Generating Code...
+﻿  InitShader.cpp
+c:\users\kumin\github\intro_to_graphics\project0\project0\angel.h(63): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+c:\users\kumin\github\intro_to_graphics\project0\project0\mat.h(698): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\kumin\github\intro_to_graphics\project0\project0\mat.h(699): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\kumin\github\intro_to_graphics\project0\project0\mat.h(700): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\kumin\github\intro_to_graphics\project0\project0\mat.h(721): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\kumin\github\intro_to_graphics\project0\project0\mat.h(723): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\kumin\github\intro_to_graphics\project0\project0\mat.h(726): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\kumin\github\intro_to_graphics\project0\project0\mat.h(743): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+  Project0.vcxproj -> C:\Users\kumin\GitHub\Intro_to_Graphics\Project0\Debug\Project0.exe
+  Project0.vcxproj -> C:\Users\kumin\GitHub\Intro_to_Graphics\Project0\Debug\Project0.pdb (Partial PDB)
