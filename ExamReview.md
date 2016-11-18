@@ -101,9 +101,9 @@
     #### Parameters
          - theta: a uniform variable containg the angle for rotation.
     #### What
-        A rotation matrix which rotates about the x-axis, preserving the x values
+       A rotation matrix which rotates about the x-axis, preserving the x values
     #### Where
-        Either in the shader or the application
+       Either in the shader or the application
         
 11. ## glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 <!-- https://www.opengl.org/sdk/docs/man/html/glClear.xhtml -->
@@ -124,11 +124,11 @@
          - GLdouble farVal: Specify the distances to the arther depth clipping planes.
          These values are negative if the plane is to be behind the viewer.
     #### What
-        If the current matrix is the projection matrix, and the projection matrix is the identity matrix, then multiplying that specific matrix into the projection matrix makes for an orthographic projection.
+       If the current matrix is the projection matrix, and the projection matrix is the identity matrix, then multiplying that specific matrix into the projection matrix makes for an orthographic projection.
 
         A transformation that produces a parallel projection
     #### Where
-        When specifying projection matrix
+       When specifying projection matrix
         
 13. ## Perspective()
 <!-- https://www.opengl.org/sdk/docs/man2/xhtml/gluPerspective.xml -->
@@ -140,7 +140,7 @@
          - GLdouble far: Specifies the distance from the viewer to the far clipping plane
          (always positive).
     #### What
-        Specifies a viewing frustum into the world coordinate system
+       Specifies a viewing frustum into the world coordinate system
         
 14. ## glDrawArrays(GL_TRIANGLES, start, length);
 <!-- https://youtu.be/6-9XFm7XAT8?t=3775 -->
