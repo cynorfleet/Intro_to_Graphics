@@ -42,7 +42,8 @@
 5. ## glUniformMatrix4fv(ModelViewLoc, 1, GL_TRUE, model_view);
 <!-- http://ogldev.atspace.co.uk/www/tutorial06/tutorial06.html -->
     #### Parameters
-        - ModelViewLoc: an integer value of location of the uniform variable (retrieved after shader compilation using glGetUniformLocation()
+        - ModelViewLoc: an integer value of location of the uniform variable (retrieved after shader
+        compilation using glGetUniformLocation()
 
         - 1: indicates the number of matrices we are updating
 
