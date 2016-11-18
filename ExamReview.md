@@ -154,15 +154,16 @@
     #### Where
        To be called once all the "plumbing" is complete
 15. 
-** glGenBuffers(1, &buffer); **   
-// returns 1 buffer object names in buffer
-** glBindBuffer(GL_ARRAY_BUFFER, buffer); **  
-// associates a buffer object to buffer
-** glBufferData(GL_ARRAY_BUFFER, Size+Size,
-NULL, GL_STATIC_DRAW);glBufferSubData(GL_ARRAY_BUFFER, 0, Size, &vertexList[0]); **   
-//  create a new data store for a buffer object
-** glBufferSubData(GL_ARRAY_BUFFER, Size, Size, &normalList[0]); **  
-//  redefine some or all of the data store for the specified buffer object. Data starting at byte offset offset and extending for size bytes is copied to the data store from the memory pointed to by data. offset and size must define a range lying entirely within the buffer object's data store.
+    ## Buffer Stuff
+    glGenBuffers(1, &buffer);
+        // returns 1 buffer object names in buffer
+    glBindBuffer(GL_ARRAY_BUFFER, buffer);
+        // associates a buffer object to buffer
+    glBufferData(GL_ARRAY_BUFFER, Size+Size,
+NULL, GL_STATIC_DRAW);glBufferSubData(GL_ARRAY_BUFFER, 0, Size, &vertexList[0]);
+        //  create a new data store for a buffer object
+    glBufferSubData(GL_ARRAY_BUFFER, Size, Size, &normalList[0]); 
+        //  redefine some or all of the data store for the specified buffer object. Data starting at byte offset offset and extending for size bytes is copied to the data store from the memory pointed to by data. offset and size must define a range lying entirely within the buffer object's data store.
 
 16. 
     ## How are the in variables fed:
