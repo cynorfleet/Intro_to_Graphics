@@ -108,9 +108,9 @@
 11. ## glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 <!-- https://www.opengl.org/sdk/docs/man/html/glClear.xhtml -->
     #### What
-        sets the bitplane area of the window to values previously selected by glClearColor, glClearDepth, and glClearStencil
+       Sets the bitplane area of the window to values previously selected by glClearColor, glClearDepth, and glClearStencil
     #### Where
-        Display Function.
+       Display Function.
         
 12. ## Ortho()
 <!-- http://www.gamedev.net/topic/634155-problems-with-glmortho/ -->
