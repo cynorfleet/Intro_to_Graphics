@@ -82,11 +82,10 @@
        Length is the amount of vertices for which u wish to draw.
     #### Where
        To be called once all the "plumbing" is complete.
-       
-9. ## LookAt();
+
+9. ## LookAt()
 <!-- https://www.opengl.org/sdk/docs/man2/xhtml/gluLookAt.xml -->
 
-<!-- https://youtu.be/6-9XFm7XAT8?t=7103 -->
     #### Parameters
         - eye: location of the camera
         - at: where you want the camera pointed at
