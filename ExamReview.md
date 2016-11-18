@@ -111,8 +111,7 @@
         Display Function.
         
 12. ## Ortho()
-
- <!-- http://www.gamedev.net/topic/634155-problems-with-glmortho/ -->
+<!-- http://www.gamedev.net/topic/634155-problems-with-glmortho/ -->
     #### Parameters
          - GLdouble left: Specify the coordinates for the left vertical clipping planes.
          - GLdouble right: Specify the coordinates for the right vertical clipping planes.
