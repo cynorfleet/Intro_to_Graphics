@@ -85,7 +85,6 @@
 <!-- https://www.opengl.org/sdk/docs/man2/xhtml/gluLookAt.xml -->
 
 <!-- https://youtu.be/6-9XFm7XAT8?t=7103 -->
-
     #### Parameters
         - eye: location of the camera
         - at: where you want the camera pointed at
