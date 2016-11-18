@@ -85,7 +85,6 @@
 
 9. ## LookAt()
 <!-- https://www.opengl.org/sdk/docs/man2/xhtml/gluLookAt.xml -->
-
     #### Parameters
         - eye: location of the camera
         - at: where you want the camera pointed at
@@ -94,7 +93,8 @@
        creates a viewing matrix derived from an eye point, a reference point indicating the center of the scene, and an UP vector
     #### Where
        Display Function
-10. ## RotateX(theta);
+       
+10. ## RotateX(theta)
 <!-- https://youtu.be/6-9XFm7XAT8?t=7404  -->
     #### Parameters
          - theta: a uniform variable containg the angle for rotation.
@@ -102,15 +102,16 @@
         A rotation matrix which rotates about the x-axis, preserving the x values
     #### Where
         Either in the shader or the application
-11. ## glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        
+11. ## glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 <!-- https://www.opengl.org/sdk/docs/man/html/glClear.xhtml -->
     #### What
         sets the bitplane area of the window to values previously selected by glClearColor, glClearDepth, and glClearStencil
     #### Where
-        Display Function
-12. ### Ortho();
-<!-- https://www.opengl.org/discussion_boards/showthread.php/148759-getting-the-Ortho
- -->
+        Display Function.
+        
+12. ## Ortho()
+
  <!-- http://www.gamedev.net/topic/634155-problems-with-glmortho/ -->
     #### Parameters
          - GLdouble left: Specify the coordinates for the left vertical clipping planes.
@@ -125,6 +126,7 @@
         A transformation that produces a parallel projection
     #### Where
         When specifying projection matrix
+        
 13. ## Perspective()
 <!-- https://www.opengl.org/sdk/docs/man2/xhtml/gluPerspective.xml -->
     #### Parameters
@@ -134,6 +136,7 @@
          - GLdouble far: Specifies the distance from the viewer to the far clipping plane (always positive).
     #### What
         Specifies a viewing frustum into the world coordinate system
+        
 14. ## glDrawArrays(GL_TRIANGLES, start, length);
 <!-- https://youtu.be/6-9XFm7XAT8?t=3775 -->
     #### What
