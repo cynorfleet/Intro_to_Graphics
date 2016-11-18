@@ -71,6 +71,7 @@
         - data ends at the last element of vPosition (offset)
     #### WHERE
        After vertex is enabled (glVertexAttribPointer)
+       
 8. ## glDrawArrays(GL_TRIANGLES, start, length);
 <!-- https://youtu.be/6-9XFm7XAT8?t=3775 -->
     #### What
@@ -81,6 +82,7 @@
        Length is the amount of vertices for which u wish to draw.
     #### Where
        To be called once all the "plumbing" is complete.
+       
 9. ## LookAt();
 <!-- https://www.opengl.org/sdk/docs/man2/xhtml/gluLookAt.xml -->
 
