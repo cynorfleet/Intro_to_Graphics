@@ -46,7 +46,9 @@
 
         - 1: indicates the number of matrices we are updating
 
-        - GL_TRUE: indicates whether the matrix is supplied in row-major or column-major order. Row-major means the matrix is supplied row after row, starting from the top. Column-major is the same but in columns.
+        - GL_TRUE: indicates whether the matrix is supplied in row-major or column-major order.
+        Row-major means the matrix is supplied row after row, starting from the top. Column-major
+        is the same but in columns.
 
         - model_view: starting address of the matrix in memory
     #### What
@@ -117,8 +119,10 @@
          - GLdouble right: Specify the coordinates for the right vertical clipping planes.
          - GLdouble bottom: Specify the coordinates for the bottom clipping planes.
          - GLdouble top: Specify the coordinates for the top horizontal clipping planes.
-         - GLdouble nearVal: Specify the distances to the nearer depth clipping planes. These values are negative if the plane is to be behind the viewer.
-         - GLdouble farVal: Specify the distances to the arther depth clipping planes. These values are negative if the plane is to be behind the viewer.
+         - GLdouble nearVal: Specify the distances to the nearer depth clipping planes.
+         These values are negative if the plane is to be behind the viewer.
+         - GLdouble farVal: Specify the distances to the arther depth clipping planes.
+         These values are negative if the plane is to be behind the viewer.
     #### What
         If the current matrix is the projection matrix, and the projection matrix is the identity matrix, then multiplying that specific matrix into the projection matrix makes for an orthographic projection.
 
@@ -131,8 +135,10 @@
     #### Parameters
          - GLdouble fov: specifies, in degrees, the angle in the y direction that is visible to the user
          - GLdouble aspect: is the aspect ratio of the scene, which is width divided by the height
-         - GLdouble near: Specifies the distance from the viewer to the near clipping plane (always positive).
-         - GLdouble far: Specifies the distance from the viewer to the far clipping plane (always positive).
+         - GLdouble near: Specifies the distance from the viewer to the near clipping plane
+         (always positive).
+         - GLdouble far: Specifies the distance from the viewer to the far clipping plane
+         (always positive).
     #### What
         Specifies a viewing frustum into the world coordinate system
         
