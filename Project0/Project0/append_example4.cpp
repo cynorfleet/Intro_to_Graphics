@@ -1,10 +1,5 @@
 //	Christian Norfleet
 //	Program 4
-//	Display a preloaded object
-//
-//	Colors are assigned to each vertex and then the rasterizer interpolates
-//   those colors across the triangles.  We us an orthographic projection
-//   as the default projection.
 
 #include "Angel.h"
 #include "Object.h"
@@ -21,7 +16,7 @@ GLfloat velocity = 5.0 * DegreesToRadians;
 GLuint modelViewLoc;
 GLfloat  theta[3] = { 0.0,0.0,0.0 };
 vec4 at, up, eye;
-GLfloat z_eye = 4.0;
+GLfloat z_eye = 5.0;
 GLfloat BoundBox_max, z_near, z_far, aspect;
 
 GLuint ProjectionLoc;
@@ -34,15 +29,12 @@ int activemodel = 0;
 
 // Create a vertex array object
 GLuint vao[modelsize];
-//----------------------------------------------------------------------------
-
-//----------------------------------------------------------------------------
 
 // OpenGL initialization
 void
 init()
 {
-	GLuint program = InitShader("vshader42.glsl", "fshader42.glsl");
+	GLuint program = InitShader("vshader.glsl", "fshader.glsl");
 
 	glUseProgram(program);
 
@@ -99,7 +91,7 @@ display(void)
 
 	eye = vec4(0.0, 0.0, z_eye, 1.0);
 	at = model[activemodel].bounds.Box_Center();
-	up = vec4(0.0, 3.0, 0.0, 0.0);
+	up = vec4(0.0, 5.0, 0.0, 0.0);
 	modelview = LookAt(eye, at, up);
 
 	modelview *= rotate;
@@ -143,14 +135,14 @@ keyboard(unsigned char key, int x, int y)
 
 	case 'a':
 	case 'A':
-		velocity *= 1.2;
+		velocity *= 1.5;
 		break;
 
 	case 'z':
 		z_eye *= 0.8;
 		break;
 	case 'Z':
-		z_eye *= 1.2;
+		z_eye *= 1.5;
 		break;
 
 	case 'w':
@@ -175,8 +167,8 @@ reshape(int width, int height)
 	glViewport(0, 0, width, height);
 	aspectRatio = GLfloat(width) / height;
 	model[activemodel].bounds.Box_Max();
-	z_far = 30;
-	z_near = 0.05;
+	z_far = 50;
+	z_near = 1;
 	projection = Perspective(45.0, aspectRatio, z_near, z_far);
 	glUniformMatrix4fv(ProjectionLoc, 1, GL_TRUE, projection);
 }

@@ -7,8 +7,8 @@ out vec4 color;
 uniform mat4 modelViewLoc;
 uniform mat4 projection;
 
-void main()
+void main() 
 {
-    gl_Position = projection * modelViewLoc * vPosition; //SS
+    gl_Position = projection * modelViewLoc * vPosition;
     color = vColor;
-}
+} 

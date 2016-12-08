@@ -1,3 +1,6 @@
+//	Christian Norfleet
+//	Program 4
+
 #include "Object.h"
 # include <cmath>
 # include <string>
@@ -125,8 +128,6 @@ void Object::ParseFace()
 	ss.str("");
 	ss.clear();
 }
-
-
 
 //----------------------------------------------------------------------------
 

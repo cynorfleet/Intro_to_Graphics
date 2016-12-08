@@ -1,3 +1,6 @@
+//	Christian Norfleet
+//	Program 4
+
 #pragma comment(lib, "freeglut")
 #pragma comment(lib, "glew32")
 #pragma once
@@ -28,25 +31,25 @@ struct bounding
 
 	//	Find vec4 min/max Constructor
 	void operator()(const vec4 &vertex_element)
-	/*-------------------------------------------- operator ------------
-	|  Function 	operator()
-	|
-	|  Purpose: 	This will overload the parentheses operator, 
-	|				read in a vec4, and check if it contains x/y/z
-	|				min/max values storing it in bounding data structure.
-	|
-	|  Parameters:
-	|	vertex_element (IN) -- An element of the vertices array (vec4)
-	|
-	|  Returns:  	N/A
-	*-------------------------------------------------------------------*/
+		/*-------------------------------------------- operator ------------
+		|  Function 	operator()
+		|
+		|  Purpose: 	This will overload the parentheses operator,
+		|				read in a vec4, and check if it contains x/y/z
+		|				min/max values storing it in bounding data structure.
+		|
+		|  Parameters:
+		|	vertex_element (IN) -- An element of the vertices array (vec4)
+		|
+		|  Returns:  	N/A
+		*-------------------------------------------------------------------*/
 	{
 		//	Loop the x/y/z values of vec4
-		for(int axis = 0; axis < 3; axis++)
+		for (int axis = 0; axis < 3; axis++)
 		{
 			/***********************************************************************
-			*	use *(&x_min) as index zero which ref x_min. Add i to traverse (i.e. 
-			*	i=1 would traverse to [address space of x_min + 1] == y_min). 
+			*	use *(&x_min) as index zero which ref x_min. Add i to traverse (i.e.
+			*	i=1 would traverse to [address space of x_min + 1] == y_min).
 			************************************************************************/
 			if (vertex_element[axis] < *(&x_min + axis))
 				*(&x_min + axis) = vertex_element[axis];
@@ -54,32 +57,34 @@ struct bounding
 			*	use *(&x_max) as index three which ref x_max. Add i to traverse (i.e.
 			*	i=0 would traverse to [address space of x_max + 0] == x_max).
 			************************************************************************/
-			else if (vertex_element[axis] > *(&x_max + axis) )
+			else if (vertex_element[axis] > *(&x_max + axis))
 				*(&x_max + axis) = vertex_element[axis];
 		}
 	}
 
 	void Reset()
-	/*-------------------------------------------- Reset -----
-	|  Function 	Reset()
-	|
-	|  Purpose: 	Resets the bounding data
-	|
-	|  Parameters:
-	|	 (IN) -- ARG DESCRIPTION HERE
-	|
-	|  Returns:  	N/A
-	*-------------------------------------------------------------------*/
-	{ x_min = 0, x_max = 0, y_min = 0, y_max = 0, z_min = 0, z_max = 0; }
+		/*-------------------------------------------- Reset -----
+		|  Function 	Reset()
+		|
+		|  Purpose: 	Resets the bounding data
+		|
+		|  Parameters:
+		|	 (IN) -- ARG DESCRIPTION HERE
+		|
+		|  Returns:  	N/A
+		*-------------------------------------------------------------------*/
+	{
+		x_min = 0, x_max = 0, y_min = 0, y_max = 0, z_min = 0, z_max = 0;
+	}
 
 	vec4 Box_Center()
-	/*-------------------------------------------- Box_Center -----
-	|  Function 	Box_Center()
-	|
-	|  Purpose: 	Finds the center point of the bounding box
-	|
-	|  Returns:  	N/A
-	*-------------------------------------------------------------------*/
+		/*-------------------------------------------- Box_Center -----
+		|  Function 	Box_Center()
+		|
+		|  Purpose: 	Finds the center point of the bounding box
+		|
+		|  Returns:  	N/A
+		*-------------------------------------------------------------------*/
 	{
 		box_center[0] = (x_max + x_min) / 2;
 		box_center[1] = (y_max + y_min) / 2;
@@ -90,13 +95,13 @@ struct bounding
 	}
 
 	GLfloat Box_Max()
-	/*-------------------------------------------- Box_Max -----
-	|  Function 	Box_Max()
-	|
-	|  Purpose: 	Finds the Max value in X/Y/Z
-	|
-	|  Returns:  	N/A
-	*-------------------------------------------------------------------*/
+		/*-------------------------------------------- Box_Max -----
+		|  Function 	Box_Max()
+		|
+		|  Purpose: 	Finds the Max value in X/Y/Z
+		|
+		|  Returns:  	N/A
+		*-------------------------------------------------------------------*/
 	{
 		box_max = 0;
 		for (int i = 0; i < 3; i++)
@@ -106,16 +111,16 @@ struct bounding
 	}
 
 	string ToString()
-	/*-------------------------------------------- ToString ------------
-	|  Function 	ToString()
-	|
-	|  Purpose: 	Returns the Min/Max values of X/Y/Z in a vec4
-	|
-	|  Parameters:
-	|	 (IN) -- ARG DESCRIPTION HERE
-	|
-	|  Returns:  	String
-	*-------------------------------------------------------------------*/
+		/*-------------------------------------------- ToString ------------
+		|  Function 	ToString()
+		|
+		|  Purpose: 	Returns the Min/Max values of X/Y/Z in a vec4
+		|
+		|  Parameters:
+		|	 (IN) -- ARG DESCRIPTION HERE
+		|
+		|  Returns:  	String
+		*-------------------------------------------------------------------*/
 	{
 		string output = "----------------------------------------\n";
 
@@ -135,7 +140,6 @@ struct bounding
 	GLfloat& operator [] (int i) { return *(&x_min + i); }
 	const GLfloat operator [] (int i) const { return *(&x_min + i); }
 };
-
 
 class Object
 {
