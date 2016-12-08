@@ -12,16 +12,14 @@
 #pragma comment(lib, "freeglut")
 #pragma comment(lib, "glew32")
 
-// Array of rotation angles (in degrees) for each coordinate axis
 enum { X = 0, Y = 1, Z = 2 };
 
-int axis_numb = 3;
 int axisActive = X;
 
 GLfloat Theta[3] = { 0.0, 0.0, 0.0 };
 GLfloat velocity = 5.0 * DegreesToRadians;
 GLuint modelViewLoc;
-GLuint  theta;  // The location of the "theta" shader uniform variable
+GLfloat  theta[3] = { 0.0,0.0,0.0 };
 vec4 at, up, eye;
 GLfloat z_eye = 4.0;
 GLfloat BoundBox_max, z_near, z_far, aspect;
@@ -71,19 +69,19 @@ mat4 _RotateFunc(GLfloat angle, int which_axis)
 	{
 	case 0:
 		return mat4(1.0, 0.0, 0.0, 0.0,
-			0.0, cos(theta), sin(theta), 0.0,
-			0.0, -sin(theta), cos(theta), 0.0,
+			0.0, cos(angle), sin(angle), 0.0,
+			0.0, -sin(angle), cos(angle), 0.0,
 			0.0, 0.0, 0.0, 1.0);
 		break;
 	case 1:
-		return mat4(cos(theta), 0.0, sin(theta), 0.0,
+		return mat4(cos(angle), 0.0, sin(angle), 0.0,
 			0.0, 1.0, 0.0, 0.0,
-			-sin(theta), 0.0, cos(theta), 0.0,
+			-sin(angle), 0.0, cos(angle), 0.0,
 			0.0, 0.0, 0.0, 1.0);
 		break;
 	case 2:
-		return mat4(cos(theta), -sin(theta), 0.0, 0.0,
-			sin(theta), cos(theta), 0.0, 0.0,
+		return mat4(cos(angle), -sin(angle), 0.0, 0.0,
+			sin(angle), cos(angle), 0.0, 0.0,
 			0.0, 0.0, 1.0, 0.0,
 			0.0, 0.0, 0.0, 1.0);
 		break;
@@ -145,7 +143,7 @@ keyboard(unsigned char key, int x, int y)
 
 	case 'a':
 	case 'A':
-		velocity *= -1;
+		velocity *= 1.2;
 		break;
 
 	case 'z':
