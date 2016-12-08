@@ -158,7 +158,6 @@ public:
 	vec4 ParseData();
 	string meshname;
 	void ParseFace();
-	void MakeArray();
 	~Object();
 	int load(GLuint);
 	void draw();

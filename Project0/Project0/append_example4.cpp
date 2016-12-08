@@ -13,67 +13,50 @@
 #pragma comment(lib, "glew32")
 
 // Array of rotation angles (in degrees) for each coordinate axis
-enum axisType { X = 0, Y = 1, Z = 2 };
-axisType axis = X;
-int axisActive = axis;
+enum { X = 0, Y = 1, Z = 2 };
+
+int axis_numb = 3;
+int axisActive = X;
 
 GLfloat Theta[3] = { 0.0, 0.0, 0.0 };
-GLfloat velocity = DegreesToRadians * 10;
+GLfloat velocity = 5.0 * DegreesToRadians;
 GLuint modelViewLoc;
-GLuint program;
 GLuint  theta;  // The location of the "theta" shader uniform variable
-vec4 at, up;
-vec4 camera(0.0, 0.0, 5.0, 1);
-vec2 projbox(0.5, 50);
+vec4 at, up, eye;
+GLfloat z_eye = 4.0;
+GLfloat BoundBox_max, z_near, z_far, aspect;
 
 GLuint ProjectionLoc;
 mat4 projection;
 GLfloat projection_near, projection_far, aspectRatio;
 
-vector<string> modelname = { "cube.obj", "bb8.obj", "megatron.obj", "batman.obj", "ironmanmarkII.obj" };
-vector <Object> model;
+const int modelsize = 5;
+Object model[modelsize] = { Object("cube.obj"), Object("bb8.obj"), Object("megatron.obj"), Object("batman.obj"), Object("ironmanmarkII.obj") };
 int activemodel = 0;
 
 // Create a vertex array object
-GLuint** vao = new GLuint*[model.size()];
+GLuint vao[modelsize];
 //----------------------------------------------------------------------------
 
 //----------------------------------------------------------------------------
-
-void
-_LoadModels()
-/*-------------------------------------------- _LoadModels -----
-|  Function 	_LoadModels()
-|
-|  Purpose: 	Will populate vector with model objects generated from
-|				the names provided in model names.
-|
-|  Returns:  	N/A
-*-------------------------------------------------------------------*/
-{
-	if (model.size() == 0)
-		for (int i = 0; i < modelname.size(); i++)
-			model.push_back(Object(modelname[i]));
-}
 
 // OpenGL initialization
 void
 init()
 {
-	program = InitShader("vshader_a4.glsl", "fshader_a4.glsl");
+	GLuint program = InitShader("vshader42.glsl", "fshader42.glsl");
 
 	glUseProgram(program);
 
-	glGenVertexArrays(model.size(), *vao);
+	glGenVertexArrays(modelsize, vao);
 
-	_LoadModels();
-	for (int i = 0; i < model.size(); i++)
+	for (int i = 0; i < modelsize; i++)
 	{
-		glBindVertexArray(*vao[i]);
+		glBindVertexArray(vao[i]);
 		model[i].load(program);
 	}
 
-	glBindVertexArray(*vao[activemodel]);
+	glBindVertexArray(vao[activemodel]);
 
 	ProjectionLoc = glGetUniformLocation(program, "projection");
 	modelViewLoc = glGetUniformLocation(program, "modelViewLoc");
@@ -116,15 +99,16 @@ display(void)
 	mat4 rotate = _RotateFunc(Theta[X], X) * _RotateFunc(Theta[Y], Y)
 		*_RotateFunc(Theta[Z], Z);
 
+	eye = vec4(0.0, 0.0, z_eye, 1.0);
 	at = model[activemodel].bounds.Box_Center();
-	up = vec4(0.0, 10.0, 0.0, 0.0);
-	modelview = LookAt(camera, at, up);
+	up = vec4(0.0, 3.0, 0.0, 0.0);
+	modelview = LookAt(eye, at, up);
 
 	modelview *= rotate;
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	glUniform3fv(theta, 1, Theta);
+	glUniformMatrix4fv(modelViewLoc, 1, GL_TRUE, modelview);
 	model[activemodel].draw();
 
 	string winowname = model[activemodel].meshname + ": FPS:%d ";
@@ -152,19 +136,23 @@ keyboard(unsigned char key, int x, int y)
 	switch (key)
 	{
 	case 's': case 'S':
-		activemodel < model.size() - 1 ? activemodel++ : activemodel = 0;
-		glBindVertexArray(*vao[activemodel]);
-		camera.z = 5.0;
+		activemodel < modelsize - 1 ? activemodel++ : activemodel = 0;
+		glBindVertexArray(vao[activemodel]);
+		eye.z = 5.0;
 		Theta[X] = Theta[Y] = Theta[Z] = 0;
 		model[activemodel].draw();
 		break;
 
-	case 'a': case 'A':
+	case 'a':
+	case 'A':
 		velocity *= -1;
 		break;
 
-	case 'z': case 'Z':
-		camera.z *= 2;
+	case 'z':
+		z_eye *= 0.8;
+		break;
+	case 'Z':
+		z_eye *= 1.2;
 		break;
 
 	case 'w':
@@ -179,7 +167,8 @@ keyboard(unsigned char key, int x, int y)
 	}
 
 	model[activemodel].bounds.Box_Max();
-	projection = Perspective(45, aspectRatio, projbox[0], projbox[1]);
+	projection = Perspective(45.0, aspectRatio, z_near, z_far);
+	glUniformMatrix4fv(ProjectionLoc, 1, GL_TRUE, projection);
 }
 
 void
@@ -188,7 +177,9 @@ reshape(int width, int height)
 	glViewport(0, 0, width, height);
 	aspectRatio = GLfloat(width) / height;
 	model[activemodel].bounds.Box_Max();
-	projection = Perspective(45, aspectRatio, model[activemodel].bounds.z_min + 3, model[activemodel].bounds.z_max -10);
+	z_far = 30;
+	z_near = 0.05;
+	projection = Perspective(45.0, aspectRatio, z_near, z_far);
 	glUniformMatrix4fv(ProjectionLoc, 1, GL_TRUE, projection);
 }
 
@@ -197,19 +188,18 @@ reshape(int width, int height)
 void
 mouse(int button, int state, int x, int y)
 {
-	if (state == GLUT_DOWN) 
+	if (state == GLUT_DOWN)
 	{
-		switch (button) 
+		switch (button)
 		{
-			case GLUT_LEFT_BUTTON:    axis = X;  break;
-			case GLUT_MIDDLE_BUTTON:  axis = Y;  break;
-			case GLUT_RIGHT_BUTTON:   axis = Z;  break;
+		case GLUT_LEFT_BUTTON:    axisActive = X;  break;
+		case GLUT_MIDDLE_BUTTON:  axisActive = Y;  break;
+		case GLUT_RIGHT_BUTTON:   axisActive = Z;  break;
 		}
-
-		Theta[axis] += velocity;
-		if (Theta[axis] > 360.0)
+		Theta[axisActive] += velocity;
+		if (Theta[axisActive] > 360.0)
 		{
-			Theta[axis] -= 360.0;
+			Theta[axisActive] -= 360.0;
 		}
 	}
 }
@@ -223,8 +213,6 @@ idle(void)
 }
 
 //----------------------------------------------------------------------------
-
-
 
 int
 main(int argc, char **argv)
@@ -248,7 +236,7 @@ main(int argc, char **argv)
 	glutKeyboardFunc(keyboard);
 	glutMouseFunc(mouse);
 	glutIdleFunc(idle);
-
+	glutReshapeFunc(reshape);
 	glutMainLoop();
 	cout << "END";
 	system("pause");

@@ -9,7 +9,6 @@ Object::Object()
 {
 }
 
-
 Object::Object(const Object& other)
 {
 	instream = other.instream;
@@ -30,50 +29,51 @@ void Object::_LoadProgress(string file_name)
 	ifstream scalerfile;
 	int length;
 	scalerfile.open(file_name);
-if (scalerfile) {
-	// get length of file:
-	scalerfile.seekg(0, scalerfile.end);
-	length = scalerfile.tellg();
-	scalerfile.seekg(0, scalerfile.beg);
-	progressscaler = (length*.1);
+	if (scalerfile) {
+		// get length of file:
+		scalerfile.seekg(0, scalerfile.end);
+		length = scalerfile.tellg();
+		scalerfile.seekg(0, scalerfile.beg);
+		progressscaler = (length*.1);
 	}
 }
 
 void Object::_LoadData(string file_name)
 {
-objectfile.open(file_name);
-if (!objectfile)
-{
-	cerr << "ERROR: WRONG FILE NAME " << file_name;
-}
-else {
-	meshname = file_name;
-	cout << "LOADING MESH:\t" << meshname;
-	int vert, texture, normal;
-	int progress = 0;
+	objectfile.open(file_name);
+	if (!objectfile)
+	{
+		cerr << "ERROR: WRONG FILE NAME " << file_name;
+	}
+	else {
+		meshname = file_name;
+		cout << "LOADING MESH:\t" << meshname;
+		int vert, texture, normal;
+		int progress = 0;
 
-	while (getline(objectfile, instream)) {
-		progress++;
-	if (objectfile.tellg() % progressscaler <= 100 )
-			cout << ".";
-		if (instream.substr(0, 2) == "v ")
-		{
-			vertices.push_back(ParseData());
+		while (getline(objectfile, instream)) {
+			progress++;
+			if (objectfile.tellg() % progressscaler <= 100)
+				cout << ".";
+			if (instream.substr(0, 2) == "v ")
+			{
+				vertices.push_back(ParseData());
 
-			//	Find Min/Max
-			bounds(vertices.back());
-		}
-		if (instream.substr(0, 2) == "vn")
-		{
-			normals.push_back(ParseData());
-		}
-		if (instream.substr(0, 2) == "f ")
-		{
-			ParseFace();
+				//	Find Min/Max
+				bounds(vertices.back());
+			}
+			if (instream.substr(0, 2) == "vn")
+			{
+				normals.push_back(ParseData());
+			}
+			if (instream.substr(0, 2) == "f ")
+			{
+				ParseFace();
+			}
 		}
 	}
-}
-	MakeArray();
+	for (int i = 0; i < vertIndices.size(); i++)
+		pointarray.push_back(vertices[vertIndices[i]]);
 	cout << " DONE\n";
 }
 
@@ -126,17 +126,13 @@ void Object::ParseFace()
 	ss.clear();
 }
 
-void Object::MakeArray()
-{
-	for (int i = 0; i < vertIndices.size(); i++)
-		pointarray.push_back(vertices[vertIndices[i]]);
-}
+
 
 //----------------------------------------------------------------------------
 
 int Object::load(GLuint program)
 {
-	int size = pointarray.size() * 16;
+	int size = (pointarray.size()) * 16;
 	glGenBuffers(1, &buffer);
 
 	glBindBuffer(GL_ARRAY_BUFFER, buffer);
@@ -148,8 +144,6 @@ int Object::load(GLuint program)
 	//glGenBuffers(1, &Ibuffer);
 	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, Ibuffer);
 	//glBufferData(GL_ELEMENT_ARRAY_BUFFER, vertIndices.size() * 4, &vertIndices[0], GL_STATIC_DRAW);
-
-
 
 	GLuint vPosition = glGetAttribLocation(program, "vPosition");
 	glEnableVertexAttribArray(vPosition);

@@ -1,3 +1,8 @@
+//******************************************************************************
+//                Project #3 Rotating Objects
+//                Name: Scott Schumacher
+//                Intro to Computer Graphics 10/14/2016
+//******************************************************************************
 
 #include "Angel.h"
 
@@ -7,7 +12,13 @@ namespace Angel {
 static char*
 readShaderSource(const char* shaderFile)
 {
+	//modification of the file: Visual Studio displayed a warning that the 
+	//function fopen was potentiallly unsafe and recommended "consider
+	//using fopen_s instead." The arguments are the address of the pointer
+	//to the file, the file name, and the permissions, in this case, read.
+	
 	FILE* fp;
+	
 	fopen_s(&fp, shaderFile, "r");
 
     if ( fp == NULL ) { return NULL; }
