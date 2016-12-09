@@ -16,21 +16,23 @@ GLfloat velocity = 5.0 * DegreesToRadians;
 GLuint modelViewLoc;
 GLfloat  theta[3] = { 0.0,0.0,0.0 };
 vec4 at, up, eye;
-GLfloat z_eye = 5.0;
-GLfloat BoundBox_max, z_near, z_far, aspect;
+GLfloat z_eye = 4.0;
+GLfloat BoundBox_max, z_near, z_far, aspectratio;
 
 GLuint ProjectionLoc;
-mat4 projection;
-GLfloat projection_near, projection_far, aspectRatio;
+mat4 projection, model_view;;
 
-const int modelsize = 5;
-Object model[modelsize] = { Object("cube.obj"), Object("bb8.obj"), Object("megatron.obj"), Object("batman.obj"), Object("ironmanmarkII.obj") };
+vec4 lightPos(5.0, 5.0, 5.0, 0.0);
+vec3 lightD(1.0, 1.0, 1.0);
+vec3 lightS(1.0, 1.0, 1.0);
+vec3 lightA(0.2, 0.2, 0.2);
+GLuint lightPosLoc, lightDLoc, lightSLoc, lightALoc;
+
+const int modelsize = 2;
+Object model[modelsize] = { Object("cube.obj"), Object("bb8.obj")/*, Object("megatron.obj")/*, Object("batman.obj"), Object("ironmanmarkII.obj") */ };
 int activemodel = 0;
-
-// Create a vertex array object
 GLuint vao[modelsize];
 
-// OpenGL initialization
 void
 init()
 {
@@ -49,7 +51,18 @@ init()
 	glBindVertexArray(vao[activemodel]);
 
 	ProjectionLoc = glGetUniformLocation(program, "projection");
-	modelViewLoc = glGetUniformLocation(program, "modelViewLoc");
+	modelViewLoc = glGetUniformLocation(program, "model_view");
+
+	//	Light Stuff
+
+	lightPosLoc = glGetUniformLocation(program, "lightPos");
+	glUniform4fv(lightPosLoc, 1, lightPos);
+	lightDLoc = glGetUniformLocation(program, "lightD");
+	glUniform3fv(lightDLoc, 1, lightD);
+	lightSLoc = glGetUniformLocation(program, "lightS");
+	glUniform3fv(lightSLoc, 1, lightS);
+	lightALoc = glGetUniformLocation(program, "lightA");
+	glUniform3fv(lightALoc, 1, lightA);
 
 	glEnable(GL_DEPTH_TEST);
 	glClearColor(1.0, 1.0, 1.0, 1.0);
@@ -91,7 +104,7 @@ display(void)
 
 	eye = vec4(0.0, 0.0, z_eye, 1.0);
 	at = model[activemodel].bounds.Box_Center();
-	up = vec4(0.0, 5.0, 0.0, 0.0);
+	up = vec4(0.0, 3.0, 0.0, 0.0);
 	modelview = LookAt(eye, at, up);
 
 	modelview *= rotate;
@@ -157,7 +170,7 @@ keyboard(unsigned char key, int x, int y)
 	}
 
 	model[activemodel].bounds.Box_Max();
-	projection = Perspective(45.0, aspectRatio, z_near, z_far);
+	projection = Perspective(45.0, aspectratio, z_near, z_far);
 	glUniformMatrix4fv(ProjectionLoc, 1, GL_TRUE, projection);
 }
 
@@ -165,11 +178,11 @@ void
 reshape(int width, int height)
 {
 	glViewport(0, 0, width, height);
-	aspectRatio = GLfloat(width) / height;
+	aspectratio = GLfloat(width) / height;
 	model[activemodel].bounds.Box_Max();
-	z_far = 50;
-	z_near = 1;
-	projection = Perspective(45.0, aspectRatio, z_near, z_far);
+	z_far = 30;
+	z_near = .05;
+	projection = Perspective(45.0, aspectratio, z_near, z_far);
 	glUniformMatrix4fv(ProjectionLoc, 1, GL_TRUE, projection);
 }
 

@@ -39,6 +39,68 @@ void Object::_LoadProgress(string file_name)
 		scalerfile.seekg(0, scalerfile.beg);
 		progressscaler = (length*.1);
 	}
+	scalerfile.close();
+}
+
+void Object::_LoadMTL(string file)
+{
+	string ext_replacethis = ".obj";
+	string ext_withthis = ".mtl";
+	string line, junk;
+
+	stringstream ss;
+
+	size_t found = file.rfind(ext_replacethis);
+	if (found != std::string::npos)
+		file.replace(found, ext_replacethis.length(), ext_withthis);
+
+	ifstream material;
+	material.open(file);
+	cout << "\nOPENING FILE: " << file << "\n";
+	if (!material)
+	{
+		cout << "ERROR:cannot open " << file;
+		exit(1);
+	}
+
+	while (getline(material, line))
+	{
+		if (line.substr(0, 3) == "Ns ")
+		{
+			ss << line;
+			ss >> junk >> shininess;
+			ss.str("");
+			ss.clear();
+		}
+
+		if (line.substr(0, 3) == "Ka ")
+		{
+			ss << line;
+			ss >> junk >> Kar >> Kag >> Kab;
+			matlA = vec3(Kar, Kag, Kab);
+			ss.str("");
+			ss.clear();
+		}
+
+		if (line.substr(0, 3) == "Kd ")
+		{
+			ss << line;
+			ss >> junk >> Kdr >> Kdg >> Kdb;
+			matlD = vec3(Kdr, Kdg, Kdb);
+			ss.str("");
+			ss.clear();
+		}
+
+		if (line.substr(0, 3) == "Ks ")
+		{
+			ss << line;
+			ss >> junk >> Ksr >> Ksg >> Ksb;
+			matlS = vec3(Ksr, Ksg, Ksb);
+			ss.str("");
+			ss.clear();
+		}
+	}
+	material.close();
 }
 
 void Object::_LoadData(string file_name)
@@ -75,8 +137,13 @@ void Object::_LoadData(string file_name)
 			}
 		}
 	}
+
+	objectfile.close();
 	for (int i = 0; i < vertIndices.size(); i++)
+	{
 		pointarray.push_back(vertices[vertIndices[i]]);
+		normalarray.push_back(normals[normIndices[i]]);
+	}
 	cout << " DONE\n";
 }
 
@@ -84,6 +151,7 @@ Object::Object(string file_name)
 {
 	_LoadProgress(file_name);
 	_LoadData(file_name);
+	_LoadMTL(file_name);
 	cout << bounds.ToString();
 	cout << "BOX_MAX: " << bounds.Box_Max() << '\n';
 	cout << "Center: " << bounds.Box_Center() << "\n\n";
@@ -140,7 +208,7 @@ int Object::load(GLuint program)
 	glBufferData(GL_ARRAY_BUFFER, size + size, NULL, GL_STATIC_DRAW);
 
 	glBufferSubData(GL_ARRAY_BUFFER, 0, size, &pointarray[0]);
-	glBufferSubData(GL_ARRAY_BUFFER, size, size, &pointarray[0]);
+	glBufferSubData(GL_ARRAY_BUFFER, size, size, &normalarray[0]);
 
 	//glGenBuffers(1, &Ibuffer);
 	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, Ibuffer);
@@ -151,10 +219,15 @@ int Object::load(GLuint program)
 	glVertexAttribPointer(vPosition, 4, GL_FLOAT, GL_FALSE, 0,
 		BUFFER_OFFSET(0));
 
-	GLuint vColor = glGetAttribLocation(program, "vColor");
-	glEnableVertexAttribArray(vColor);
-	glVertexAttribPointer(vColor, 4, GL_FLOAT, GL_FALSE, 0,
+	GLuint vNormal = glGetAttribLocation(program, "vNormal");
+	glEnableVertexAttribArray(vNormal);
+	glVertexAttribPointer(vNormal, 4, GL_FLOAT, GL_FALSE, 0,
 		BUFFER_OFFSET(size));
+
+	matlDLoc = glGetUniformLocation(program, "matlD");
+	matlSLoc = glGetUniformLocation(program, "matlS");
+	matlALoc = glGetUniformLocation(program, "matlA");
+	shinyLoc = glGetUniformLocation(program, "shininess");
 
 	return 0;
 }
@@ -163,8 +236,10 @@ int Object::load(GLuint program)
 
 void Object::draw()
 {
-	//glBindVertexArray(buffer);
-	//glBindVertexArray(Ibuffer);
+	glUniform3fv(matlDLoc, 1, matlD);
+	glUniform3fv(matlSLoc, 1, matlS);
+	glUniform3fv(matlALoc, 1, matlA);
+	glUniform1f(shinyLoc, shininess);
 	glDrawArrays(GL_TRIANGLES, 0, pointarray.size());
 }
 

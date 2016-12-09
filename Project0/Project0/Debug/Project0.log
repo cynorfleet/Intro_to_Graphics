@@ -8,24 +8,10 @@ d:\github\intro_to_graphics\project0\project0\mat.h(723): warning C4244: '=': co
 d:\github\intro_to_graphics\project0\project0\mat.h(726): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
 d:\github\intro_to_graphics\project0\project0\mat.h(743): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
 d:\github\intro_to_graphics\project0\project0\append_example4.cpp(15): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-d:\github\intro_to_graphics\project0\project0\append_example4.cpp(110): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-d:\github\intro_to_graphics\project0\project0\append_example4.cpp(142): warning C4305: '*=': truncation from 'double' to 'GLfloat'
-  Object.cpp
-d:\github\intro_to_graphics\project0\project0\angel.h(63): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-d:\github\intro_to_graphics\project0\project0\mat.h(698): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\github\intro_to_graphics\project0\project0\mat.h(699): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\github\intro_to_graphics\project0\project0\mat.h(700): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\github\intro_to_graphics\project0\project0\mat.h(721): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\github\intro_to_graphics\project0\project0\mat.h(723): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\github\intro_to_graphics\project0\project0\mat.h(726): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\github\intro_to_graphics\project0\project0\mat.h(743): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\github\intro_to_graphics\project0\project0\object.cpp(38): warning C4244: '=': conversion from 'std::streamoff' to 'int', possible loss of data
-d:\github\intro_to_graphics\project0\project0\object.cpp(40): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-d:\github\intro_to_graphics\project0\project0\object.cpp(78): warning C4018: '<': signed/unsigned mismatch
-d:\github\intro_to_graphics\project0\project0\object.cpp(54): warning C4101: 'texture': unreferenced local variable
-d:\github\intro_to_graphics\project0\project0\object.cpp(54): warning C4101: 'normal': unreferenced local variable
-d:\github\intro_to_graphics\project0\project0\object.cpp(54): warning C4101: 'vert': unreferenced local variable
-  Generating Code...
-d:\github\intro_to_graphics\project0\project0\append_example4.cpp(81): warning C4715: '_RotateFunc': not all control paths return a value
+d:\github\intro_to_graphics\project0\project0\append_example4.cpp(28): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+d:\github\intro_to_graphics\project0\project0\append_example4.cpp(123): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+d:\github\intro_to_graphics\project0\project0\append_example4.cpp(155): warning C4305: '*=': truncation from 'double' to 'GLfloat'
+d:\github\intro_to_graphics\project0\project0\append_example4.cpp(184): warning C4305: '=': truncation from 'double' to 'GLfloat'
+d:\github\intro_to_graphics\project0\project0\append_example4.cpp(94): warning C4715: '_RotateFunc': not all control paths return a value
   Project0.vcxproj -> D:\GitHub\Intro_to_Graphics\Project0\Debug\Project0.exe
   Project0.vcxproj -> D:\GitHub\Intro_to_Graphics\Project0\Debug\Project0.pdb (Partial PDB)

@@ -151,12 +151,18 @@ class Object
 	vector<GLuint> textureIndicies;
 	vector<GLuint> normIndices;
 	vector<vec4>pointarray;
+	vector<vec4>normalarray;
 	GLuint buffer, Ibuffer;
+	vec3 matlD, matlS, matlA;
+	float Kdr, Kdg, Kdb, Ksr, Ksg, Ksb, Kar, Kag, Kab;
+	float shininess;
+	GLuint matlDLoc, matlSLoc, matlALoc, shinyLoc;
 
 public:
 	Object();
 	Object(const Object & other);
 	void _LoadProgress(string filename);
+	void _LoadMTL(string file_name);
 	void _LoadData(string file_name);
 	Object(string file_name);
 	vec4 ParseData();
