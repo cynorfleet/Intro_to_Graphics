@@ -23,7 +23,7 @@ GLuint ProjectionLoc;
 mat4 projection, model_view;;
 
 vec4 lightPos(-5.0, 5.0, -5.0, 0.0);
-vec3 lightD(0.5, 1.0, .1);
+vec3 lightD(1.0, 1.0, 1.0);
 vec3 lightS(1.0, 1.0, 1.0);
 vec3 lightA(0.2, 0.2, 0.2);
 GLuint lightPosLoc, lightDLoc, lightSLoc, lightALoc;
