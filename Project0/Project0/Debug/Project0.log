@@ -8,6 +8,7 @@ d:\github\intro_to_graphics\project0\project0\mat.h(723): warning C4244: '=': co
 d:\github\intro_to_graphics\project0\project0\mat.h(726): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
 d:\github\intro_to_graphics\project0\project0\mat.h(743): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
 d:\github\intro_to_graphics\project0\project0\append_example4.cpp(15): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+d:\github\intro_to_graphics\project0\project0\append_example4.cpp(26): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
 d:\github\intro_to_graphics\project0\project0\append_example4.cpp(28): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
 d:\github\intro_to_graphics\project0\project0\append_example4.cpp(123): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
 d:\github\intro_to_graphics\project0\project0\append_example4.cpp(155): warning C4305: '*=': truncation from 'double' to 'GLfloat'

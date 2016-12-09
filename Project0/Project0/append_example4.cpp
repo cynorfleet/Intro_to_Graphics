@@ -22,14 +22,14 @@ GLfloat BoundBox_max, z_near, z_far, aspectratio;
 GLuint ProjectionLoc;
 mat4 projection, model_view;;
 
-vec4 lightPos(5.0, 5.0, 5.0, 0.0);
-vec3 lightD(1.0, 1.0, 1.0);
+vec4 lightPos(-5.0, 5.0, -5.0, 0.0);
+vec3 lightD(0.5, 1.0, .1);
 vec3 lightS(1.0, 1.0, 1.0);
 vec3 lightA(0.2, 0.2, 0.2);
 GLuint lightPosLoc, lightDLoc, lightSLoc, lightALoc;
 
-const int modelsize = 2;
-Object model[modelsize] = { Object("cube.obj"), Object("bb8.obj")/*, Object("megatron.obj")/*, Object("batman.obj"), Object("ironmanmarkII.obj") */ };
+const int modelsize = 6;
+Object model[modelsize] = { Object("FirstName.obj"), Object("cube.obj"), Object("bb8.obj"), Object("megatron.obj"), Object("batman.obj"), Object("ironmanmarkII.obj") };
 int activemodel = 0;
 GLuint vao[modelsize];
 

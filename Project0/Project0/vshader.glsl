@@ -19,11 +19,16 @@ void main()
 	vec3 E = normalize(-pos);
 	vec3 H = normalize(L + E);
 	vec3 N = normalize(model_view * vNormal).xyz;
-	float Kd = max(dot(L,N), 0.0);
-	vec3 diffuse = Kd * lightD * matlD;
-	float Ks = pow(max(dot(N,H), 0.0), shininess);
-	vec3 specular = Ks * lightS * matlS;
-	vec3 ambient = lightA * matlA;
-	gl_Position = projection * model_view * vPosition; 
-	color = vec4(ambient + diffuse + specular, 1.0);
+
+	vec3 ambient = lightA*matlA;
+float Kd = max( dot(L, N), 0.0 );
+vec3 diffuse = Kd*lightD*matlD;
+float Ks = pow( max(dot(N, H), 0.0), shininess );
+vec3 specular = Ks * lightS*matlS;
+if( dot(L, N) < 0.0 ) {
+   specular = vec3(0.0, 0.0, 0.0);
+} 
+gl_Position = projection * model_view * vPosition;
+color = vec4(ambient + diffuse + specular,1.0);
+
 } 
